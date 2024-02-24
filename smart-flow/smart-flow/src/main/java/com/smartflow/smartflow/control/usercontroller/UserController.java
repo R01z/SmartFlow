@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.smartflow.smartflow.dto.logindto.LoginDTO;
 import com.smartflow.smartflow.dto.userdto.UserDTO;
+import com.smartflow.smartflow.response.LoginResponse;
 import com.smartflow.smartflow.service.userservice.UserService;
 
 @RestController
@@ -21,8 +23,7 @@ public class UserController {
 
     @PostMapping(path = "/save")
     public String saveUsers(@RequestBody UserDTO userDTO) {
-        String id = userService.addUsers(userDTO);
-        return id;
+        return userService.addUser(userDTO);
     }
 
     @PostMapping(path = "/login")
@@ -30,4 +31,5 @@ public class UserController {
         LoginResponse loginResponse = userService.loginUsers(loginDTO);
         return ResponseEntity.ok(loginResponse);
     }
+
 }
