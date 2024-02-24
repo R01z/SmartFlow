@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "smart_flow_front": {
+    "SmartFlow": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/smart_flow_front",
+            "outputPath": "dist/smart-flow",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "smart_flow_front:build:production"
+              "buildTarget": "SmartFlow:build:production"
             },
             "development": {
-              "buildTarget": "smart_flow_front:build:development"
+              "buildTarget": "SmartFlow:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "smart_flow_front:build"
+            "buildTarget": "SmartFlow:build"
           }
         },
         "test": {
