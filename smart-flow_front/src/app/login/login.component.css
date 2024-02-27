@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F98903; /* Define o fundo laranja para o body */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .logo {
+    width: 180px; /* Ajuste a largura conforme necessário */
+    height: auto; /* Mantenha a proporção original da imagem */
+    position: absolute;
+    top: 20px; /* Ajuste a distância do topo conforme necessário */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Corrige a posição para centralizar */
+    z-index: 1; /* Defina um valor de z-index menor para a logo */
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    position: absolute;
+    top: 50%; /* Posiciona o contêiner no meio da tela */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Corrige a posição para centralizar */
+    z-index: 2; /* Defina um valor de z-index maior para o card de login */
+  }
+  
+  
+  
+  
+  h1 {
+    font-family: 'Lato', sans-serif;
+    color: #F98903;
+    margin-bottom: 30px; /* Adiciona margem inferior para separar o título do formulário */
+  }  
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    background-color: #ffffff;
+    border: 2px solid #F98903;
+    border-radius: 8px;
+    color: #495057;
+  }
+  
+  .btn-primary {
+    width: 100%; /* Define a largura do botão como 100% */
+    margin-top: 20px; /* Adiciona espaçamento superior para separar o botão do campo de senha */
+    background-color: #F98903;
+    border-color: #F98903;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e63e00;
+    border-color: #e63e00;
+  }
+  
+  
+  
+  
+  
