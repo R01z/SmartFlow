@@ -23,6 +23,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private User loggedUser;
+
     @Override
     public String addUser(UserDTO userDTO) {
         User user = new User(
@@ -47,6 +49,7 @@ public class UserServiceImpl implements UserService {
             if (isPwdRight) {
                 Optional<User> user = userRepository.findOneByEmailAndPassword(loginDTO.getEmail(), encodedPassword);
                 if (user.isPresent()) {
+                    setLoggedUser(user1);
                     return new LoginResponse("Login Success", true);
                 } else {
                     return new LoginResponse("Login Failed", false);
@@ -57,6 +60,15 @@ public class UserServiceImpl implements UserService {
         } else {
             return new LoginResponse("Email not exits", false);
         }
+    }
+
+    @Override
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    private void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 
 }
