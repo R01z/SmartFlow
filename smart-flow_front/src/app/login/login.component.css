@@ -12,10 +12,10 @@ body {
   }
   
   .logo {
-    width: 180px; /* Ajuste a largura conforme necessário */
+    width: 150px; /* Ajuste a largura conforme necessário */
     height: auto; /* Mantenha a proporção original da imagem */
     position: absolute;
-    top: 20px; /* Ajuste a distância do topo conforme necessário */
+    top: 10px; /* Ajuste a distância do topo conforme necessário */
     left: 50%; /* Centraliza horizontalmente */
     transform: translateX(-50%); /* Corrige a posição para centralizar */
     z-index: 1; /* Defina um valor de z-index menor para a logo */
