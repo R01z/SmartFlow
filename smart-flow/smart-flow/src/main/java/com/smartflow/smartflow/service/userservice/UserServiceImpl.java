@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.smartflow.smartflow.dto.logindto.LoginDTO;
@@ -69,6 +70,11 @@ public class UserServiceImpl implements UserService {
 
     private void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
 }

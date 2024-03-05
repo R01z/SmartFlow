@@ -1,5 +1,7 @@
 package com.smartflow.smartflow.service.userservice;
 
+import java.util.List;
+
 import com.smartflow.smartflow.dto.logindto.LoginDTO;
 import com.smartflow.smartflow.dto.userdto.UserDTO;
 import com.smartflow.smartflow.model.User;
@@ -12,4 +14,6 @@ public interface UserService {
     LoginResponse loginUsers(LoginDTO loginDTO);
 
     User getLoggedUser();
+
+    List<User> getAllUsers();
 }

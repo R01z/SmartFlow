@@ -1,5 +1,7 @@
 package com.smartflow.smartflow.control.usercontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,4 +45,15 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping(path = "/getAllUsers")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> allUsers = userService.getAllUsers();
+        if (!allUsers.isEmpty()) {
+            return ResponseEntity.ok(allUsers);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 }
