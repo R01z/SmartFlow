@@ -33,7 +33,8 @@ public class UserServiceImpl implements UserService {
                 userDTO.getName(),
                 userDTO.getEmail(),
                 this.passwordEncoder.encode(userDTO.getPassword()),
-                new Timestamp(System.currentTimeMillis()));
+                new Timestamp(System.currentTimeMillis()),
+                userDTO.getRoles());
 
         userRepository.save(user);
 

@@ -48,12 +48,14 @@ public class User {
     public User() {
     }
 
-    public User(Integer userId, String name, String email, String password, Timestamp registrationDate) {
+    public User(Integer userId, String name, String email, String password, Timestamp registrationDate,
+            List<Roles> roles) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.registrationDate = registrationDate;
+        this.roles = roles;
     }
 
 }

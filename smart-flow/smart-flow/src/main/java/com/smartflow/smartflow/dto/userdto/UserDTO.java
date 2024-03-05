@@ -1,6 +1,9 @@
 package com.smartflow.smartflow.dto.userdto;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import com.smartflow.smartflow.model.Roles;
 
 public class UserDTO {
 
@@ -14,12 +17,16 @@ public class UserDTO {
 
     private Timestamp registrationDate;
 
-    public UserDTO(Integer userId, String name, String email, String password, Timestamp registrationDate) {
+    private List<Roles> roles;
+
+    public UserDTO(Integer userId, String name, String email, String password, Timestamp registrationDate,
+            List<Roles> roles) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.registrationDate = registrationDate;
+        this.roles = roles;
     }
 
     public UserDTO() {
@@ -63,6 +70,14 @@ public class UserDTO {
 
     public void setRegistrationDate(Timestamp registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
     }
 
     @Override
