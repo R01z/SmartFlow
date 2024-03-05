@@ -32,4 +32,12 @@
 .links ul li a {
   color: inherit; /* Herda a cor do texto definida para o menu */
   text-decoration: none; /* Remove a sublinhado padrão dos links */
+  padding: 8px 12px; /* Adiciona espaçamento interno aos links */
+  border-radius: 4px; /* Adiciona bordas arredondadas aos links */
+  transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para a mudança de cor */
+}
+
+.links ul li a:hover {
+  background-color: #ffffff; /* Muda o background para branco ao passar o mouse */
+  color: #f98903; /* Muda a cor do texto para laranja ao passar o mouse */
 }

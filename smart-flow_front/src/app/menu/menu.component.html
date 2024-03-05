@@ -1,15 +1,17 @@
 <header class="menu">
-    <div class="logo">
-      <!-- Aqui vai a sua logo -->
+  <div class="logo">
+    <a [routerLink]="['/home']">
       <img src="assets/images/logo.png" alt="Logo">
-    </div>
-    <nav class="links">
-      <ul>
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <!-- Adicione mais links conforme necessário -->
-      </ul>
-    </nav>
+    </a>
+  </div>
+  <nav class="links">
+    <ul>
+      <li><a [routerLink]="['/home']">Página Inicial</a></li>
+      <li><a [routerLink]="['/user-control']">Cadastro de Usuários</a></li>
+      <li><a href="#">Link 3</a></li>
+    </ul>
+  </nav>
 </header>
+
   
+
