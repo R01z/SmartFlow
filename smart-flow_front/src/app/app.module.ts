@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { MenuComponent } from './menu/menu.component';
 import { UserControlComponent } from './user-control/user-control.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,18 @@ import { UserControlComponent } from './user-control/user-control.component';
     LoginComponent,
     HomeComponent,
     MenuComponent,
-    UserControlComponent
+    UserControlComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
+  ],
+  exports: [
+    UserRegisterComponent
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

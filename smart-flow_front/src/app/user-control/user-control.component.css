@@ -1,0 +1,19 @@
+.create-user-button {
+    background-color: #f98903; /* Fundo laranja */
+    color: #ffffff; /* Letras brancas */
+    padding: 8px 16px 8px; /* Adiciona espaçamento interno ao botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 4px; /* Adiciona bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para a mudança de cor */
+    margin: 20px 20px;
+    border: 2px solid transparent;
+  }
+  
+  .create-user-button:hover {
+    background-color: #ffffff; /* Muda o background para branco ao passar o mouse */
+    color: #f98903; /* Muda a cor do texto para laranja ao passar o mouse */
+    border-color: #f98903;
+    box-shadow: 0 0 10px 0 #f98903;
+  }
+  
