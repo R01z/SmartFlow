@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.smartflow.smartflow.dto.logindto.LoginDTO;
 import com.smartflow.smartflow.dto.userdto.UserDTO;
+import com.smartflow.smartflow.model.Roles;
 import com.smartflow.smartflow.model.User;
+import com.smartflow.smartflow.repository.RolesRepository;
 import com.smartflow.smartflow.repository.UserRepository;
 import com.smartflow.smartflow.response.LoginResponse;
 
@@ -24,17 +27,26 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private RolesRepository rolesRepository;
+
     private User loggedUser;
 
     @Override
     public String addUser(UserDTO userDTO) {
+
+        List<Roles> roles = new ArrayList<>();
+        for (Roles role : userDTO.getRoles()) {
+            roles.add(rolesRepository.findById(role.getId()).orElse(null));
+        }
+
         User user = new User(
                 userDTO.getUserId(),
                 userDTO.getName(),
                 userDTO.getEmail(),
                 this.passwordEncoder.encode(userDTO.getPassword()),
                 new Timestamp(System.currentTimeMillis()),
-                userDTO.getRoles());
+                roles);
 
         userRepository.save(user);
 
