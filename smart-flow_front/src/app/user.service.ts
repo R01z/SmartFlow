@@ -12,4 +12,8 @@ export class UserService {
   getLoggedUser(): Observable<any> {
     return this.http.get('http://localhost:8090/api/v1/users/loggedUser');
   }
+
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:8090/api/v1/users/getAllUsers');
+  }
 }

@@ -1,4 +1,28 @@
 <app-menu></app-menu>
 <button class="create-user-button" (click)="openUserRegisterModal()">+ Criar Novo Usuário</button>
 
-
+<table class="user-table">
+    <caption>Lista de Usuários</caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Papéis</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let role of user.roles">{{ role.name }}</li>
+          </ul>
+        </td>
+        <td><button (click)="editUser(user.userId)">Editar</button></td>
+      </tr>
+    </tbody>
+</table>
