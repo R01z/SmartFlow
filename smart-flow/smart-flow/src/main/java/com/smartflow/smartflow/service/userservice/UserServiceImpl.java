@@ -40,13 +40,26 @@ public class UserServiceImpl implements UserService {
             roles.add(rolesRepository.findById(role.getId()).orElse(null));
         }
 
-        User user = new User(
-                userDTO.getUserId(),
-                userDTO.getName(),
-                userDTO.getEmail(),
-                this.passwordEncoder.encode(userDTO.getPassword()),
-                new Timestamp(System.currentTimeMillis()),
-                roles);
+        User user = null;
+
+        if (userDTO.getUserId() != null) {
+            user = userRepository.findById(userDTO.getUserId()).orElse(null);
+        }
+
+        if (user == null) {
+            user = new User(
+                    userDTO.getUserId(),
+                    userDTO.getName(),
+                    userDTO.getEmail(),
+                    this.passwordEncoder.encode(userDTO.getPassword()),
+                    new Timestamp(System.currentTimeMillis()),
+                    roles);
+        } else {
+            user.setEmail(userDTO.getEmail());
+            user.setName(userDTO.getName());
+            user.setPassword(userDTO.getPassword());
+            user.setRoles(roles);
+        }
 
         userRepository.save(user);
 
