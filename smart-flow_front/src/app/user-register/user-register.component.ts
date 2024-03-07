@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -15,11 +18,26 @@ export class UserRegisterComponent implements OnInit {
     roles: []
   };
   roles: any[] = [];
+  title: string = 'Adicionar Novo Usuário'; // Título padrão
+  submitButtonLabel: string = 'Cadastrar'; // Rótulo do botão padrão
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, 
+    public dialogRef: MatDialogRef<UserRegisterComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
     this.getAllRoles();
+
+    if (this.data && this.data.userId) {
+      this.getUser(this.data.userId);
+      this.title = 'Editar Usuário'; // Altera o título para "Editar Usuário"
+      this.submitButtonLabel = 'Salvar Alterações'; // Altera o rótulo do botão para "Salvar Alterações"
+    }
+  }
+
+  getUser(userId: string): void {
+    this.http.get<any>('http://localhost:8090/api/v1/users/getUserById/' + userId).subscribe(user => {
+      this.userData = user;
+    });
   }
 
   getAllRoles(): void {

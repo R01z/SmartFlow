@@ -103,4 +103,14 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public User getUserById(Integer userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
+
+    @Override
+    public void deleteUserById(Integer userId) {
+        userRepository.deleteById(userId);
+    }
+
 }

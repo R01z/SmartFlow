@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserRegisterComponent } from '../user-register/user-register.component';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-control',
@@ -11,7 +12,7 @@ import { UserService } from '../user.service';
 export class UserControlComponent implements OnInit {
   users: any[] = []; // Array para armazenar os usuários
 
-  constructor(private dialog: MatDialog, private userService: UserService) { }
+  constructor(private dialog: MatDialog, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUsers(); // Carrega os usuários ao inicializar o componente
@@ -34,7 +35,10 @@ export class UserControlComponent implements OnInit {
     );
   }
 
-  editUser(userId: number): void {
-    // Lógica para editar usuário
+  editUser(userId: string): void {
+    this.dialog.open(UserRegisterComponent, {
+      width: '600px',
+      data: { userId }
+    });
   }
 }
