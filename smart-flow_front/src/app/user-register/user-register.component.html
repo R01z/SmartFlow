@@ -1,21 +1,26 @@
-<form (ngSubmit)="submitForm()">
-  <div>
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="userData.name" required>
-  </div>
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="userData.email" required>
-  </div>
-  <div>
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="userData.password" required>
-  </div>
-  <div>
-    <label for="roles">Papéis:</label>
-    <select id="roles" name="roles" multiple [(ngModel)]="userData.roles" required>
-      <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
-    </select>
-  </div>
-  <button type="submit">Cadastrar</button>
-</form>
+<div class="container">
+    <div class="card">
+        <h1>Adicionar Novo Usuário</h1>
+        <form (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" [(ngModel)]="userData.name" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" [(ngModel)]="userData.email" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" [(ngModel)]="userData.password" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="roles">Papéis:</label>
+                <select id="roles" name="roles" multiple [(ngModel)]="userData.roles" required class="form-control">
+                    <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>
