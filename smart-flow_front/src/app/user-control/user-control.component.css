@@ -1,19 +1,64 @@
+.user-table {
+  margin: 0 auto; /* Centraliza a tabela na tela */
+  border-collapse: collapse; /* Colapso das bordas das células */
+  width: 80%; /* Define a largura da tabela */
+}
+
+.user-table caption {
+  font-weight: bold; /* Deixa o texto da legenda em negrito */
+  font-size: 1.2em; /* Ajusta o tamanho da fonte da legenda */
+  background-color: #F98903; /* Fundo laranja */
+  color: #ffffff; /* Letras brancas */
+  padding: 10px; /* Adiciona espaçamento interno à legenda */
+  caption-side: top; /* Coloca a legenda acima da tabela */
+  text-align: center;
+}
+
+.user-table th {
+  background-color: #F98903; /* Fundo laranja */
+  color: #ffffff; /* Letras brancas */
+  font-weight: bold; /* Deixa o texto em negrito */
+  border: 2px solid #F98903; /* Adiciona borda laranja aos cabeçalhos */
+  padding: 10px; /* Adiciona espaçamento interno aos cabeçalhos */
+}
+
+.user-table td {
+  border: 2px solid #F98903; /* Adiciona borda laranja às células */
+  padding: 10px; /* Adiciona espaçamento interno às células */
+}
+
+.user-table th,
+.user-table td {
+  text-align: center; /* Centraliza o conteúdo das células */
+}
+
+.user-table th,
+.user-table td {
+  /* Regule a espessura da linha aqui */
+  border-width: 2px; /* Espessura padrão da borda */
+  border-style: solid; /* Estilo da borda */
+}
+
 .create-user-button {
-    background-color: #f98903; /* Fundo laranja */
-    color: #ffffff; /* Letras brancas */
-    padding: 8px 16px 8px; /* Adiciona espaçamento interno ao botão */
-    border: none; /* Remove a borda do botão */
-    border-radius: 4px; /* Adiciona bordas arredondadas */
-    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
-    transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para a mudança de cor */
-    margin: 20px 20px;
-    border: 2px solid transparent;
-  }
-  
-  .create-user-button:hover {
-    background-color: #ffffff; /* Muda o background para branco ao passar o mouse */
-    color: #f98903; /* Muda a cor do texto para laranja ao passar o mouse */
-    border-color: #f98903;
-    box-shadow: 0 0 10px 0 #f98903;
-  }
-  
+  background-color: #f98903; /* Fundo laranja */
+  color: #ffffff; /* Letras brancas */
+  padding: 8px 16px; /* Adiciona espaçamento interno ao botão */
+  border: none; /* Remove a borda do botão */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+  transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para a mudança de cor */
+  margin: 20px 20px;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.create-user-button:hover {
+  background-color: #ffffff; /* Muda o background para branco ao passar o mouse */
+  color: #f98903; /* Muda a cor do texto para laranja ao passar o mouse */
+  border-color: #f98903;
+  box-shadow: 0 0 10px 0 #f98903;
+}
+
+.table-container {
+  position: relative;
+}
