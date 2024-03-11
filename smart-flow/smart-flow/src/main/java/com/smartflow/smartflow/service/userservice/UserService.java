@@ -18,4 +18,6 @@ public interface UserService {
     List<User> getAllUsers();
 
     User getUserById(Integer userId);
+
+    boolean deleteUserById(Integer userId);
 }
