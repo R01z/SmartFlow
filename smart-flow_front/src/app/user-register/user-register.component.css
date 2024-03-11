@@ -73,4 +73,20 @@ body {
     background-color: #e63e00;
     border-color: #e63e00;
   }
+
+  .btn-delete {
+    width: 50%;
+    margin-top: 20px;
+    background-color: #f90303;
+    border-color: #f90303;
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-delete:hover {
+    background-color: #df1717;
+    border-color: #df1717;
+  }
   

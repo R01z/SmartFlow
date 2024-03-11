@@ -20,6 +20,7 @@ export class UserRegisterComponent implements OnInit {
   roles: any[] = [];
   title: string = 'Adicionar Novo Usuário'; // Título padrão
   submitButtonLabel: string = 'Cadastrar'; // Rótulo do botão padrão
+  isEditMode: boolean = false; // Define o modo de edição
 
   constructor(private http: HttpClient, private route: ActivatedRoute, 
     public dialogRef: MatDialogRef<UserRegisterComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
@@ -31,6 +32,7 @@ export class UserRegisterComponent implements OnInit {
       this.getUser(this.data.userId);
       this.title = 'Editar Usuário'; // Altera o título para "Editar Usuário"
       this.submitButtonLabel = 'Salvar Alterações'; // Altera o rótulo do botão para "Salvar Alterações"
+      this.isEditMode = true;
     }
   }
 
@@ -52,6 +54,16 @@ export class UserRegisterComponent implements OnInit {
     this.http.post('http://localhost:8090/api/v1/users/save', this.userData).subscribe(response => {
       console.log(response);
       // Aqui você pode lidar com a resposta do servidor, por exemplo, exibindo uma mensagem de sucesso ou redirecionando para outra página
+    });
+  }
+
+  deleteUser(): void {
+    const userId = this.data.userId;
+    this.http.delete(`http://localhost:8090/api/v1/users/deleteUser/${userId}`).subscribe(response => {
+      console.log('Usuário deletado com sucesso:', response);
+      this.dialogRef.close(); // Fecha a janela modal após a exclusão
+    }, error => {
+      console.error('Erro ao deletar o usuário:', error);
     });
   }
 }
