@@ -48,4 +48,14 @@ public class Teams {
         this.members = members;
         this.description = description;
     }
+
+    public void addMembers(List<User> newMembers) {
+        List<User> oldMembers = getMembers();
+
+        for (User user : newMembers) {
+            oldMembers.add(user);
+        }
+
+        setMembers(oldMembers);
+    }
 }
