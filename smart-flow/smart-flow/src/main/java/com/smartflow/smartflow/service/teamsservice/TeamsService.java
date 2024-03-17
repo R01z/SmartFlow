@@ -9,7 +9,7 @@ public interface TeamsService {
 
     String addTeam(TeamDTO teamDTO);
 
-    String deleteTeamById(Integer teamId);
+    boolean deleteTeamById(Integer teamId);
 
     List<Teams> getAllTeams();
 

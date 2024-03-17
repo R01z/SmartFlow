@@ -50,9 +50,9 @@ public class TeamsServiceImpl implements TeamsService {
     }
 
     @Override
-    public String deleteTeamById(Integer teamId) {
+    public boolean deleteTeamById(Integer teamId) {
         teamsRepository.deleteById(teamId);
-        return "Team deleated";
+        return true;
     }
 
     @Override
@@ -72,6 +72,8 @@ public class TeamsServiceImpl implements TeamsService {
         List<User> users = userRepository.findAllById(usersIds);
 
         team.addMembers(users);
+
+        teamsRepository.save(team);
 
         return "Members added";
     }
