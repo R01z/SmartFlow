@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smartflow.smartflow.dto.teamdto.TeamDTO;
 import com.smartflow.smartflow.model.Teams;
-import com.smartflow.smartflow.model.User;
 import com.smartflow.smartflow.service.teamsservice.TeamsService;
 
 @RestController

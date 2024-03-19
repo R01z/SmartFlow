@@ -3,7 +3,6 @@ package com.smartflow.smartflow.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,7 +31,7 @@ public class Teams {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "teams_users", joinColumns = @JoinColumn(name = "teamId", referencedColumnName = "teamId"), inverseJoinColumns = @JoinColumn(name = "userId", referencedColumnName = "userId"))
     private List<User> members = new ArrayList<>();
 

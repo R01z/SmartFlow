@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.smartflow.smartflow.dto.teamdto.TeamDTO;
 import com.smartflow.smartflow.model.Teams;
@@ -11,6 +12,7 @@ import com.smartflow.smartflow.model.User;
 import com.smartflow.smartflow.repository.TeamsRepository;
 import com.smartflow.smartflow.repository.UserRepository;
 
+@Service
 public class TeamsServiceImpl implements TeamsService {
 
     @Autowired
