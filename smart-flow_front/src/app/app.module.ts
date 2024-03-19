@@ -13,6 +13,7 @@ import { UserService } from './user.service';
 import { MenuComponent } from './menu/menu.component';
 import { UserControlComponent } from './user-control/user-control.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { TeamsComponent } from './teams/teams.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserRegisterComponent } from './user-register/user-register.component';
     HomeComponent,
     MenuComponent,
     UserControlComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,
