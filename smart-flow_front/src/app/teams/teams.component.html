@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 
-<button class="create-team-button" (click)="openUserRegisterModal()">+ Criar Novo Time</button>
+<button class="create-team-button" (click)="openTeamRegisterModal()">+ Criar Novo Time</button>
 
 <table class="team-table">
     <caption>Lista de Times</caption>
@@ -17,7 +17,7 @@
         <td>{{ team.teamId }}</td>
         <td>{{ team.name }}</td>
         <td>{{ team.description }}</td>
-        <td>Editar</td>
+        <td><button (click)="editTeam(team.teamId)">Editar</button></td>
       </tr>
     </tbody>
 </table>

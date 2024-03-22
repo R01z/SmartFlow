@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-teams-register',
@@ -13,8 +15,25 @@ export class TeamsRegisterComponent {
     membersEmails: [] as string[]
   };
   memberEmails: string = '';
+  title: string = 'Adicionar Novo Time'; // Título padrão
+  isEditMode: boolean = false; // Define o modo de edição
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, 
+    public dialogRef: MatDialogRef<TeamsRegisterComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  ngOnInit(): void {
+   if (this.data && this.data.teamId) {
+      this.getTeam(this.data.teamId);
+      this.title = 'Editar Time'; // Altera o título para "Editar Usuário"
+      this.isEditMode = true;
+    }
+  }
+  
+  getTeam(teamId: string): void {
+    this.http.get<any>('http://localhost:8090/api/v1/teams/getTeamById/' + teamId).subscribe(team => {
+      this.teamData = team;
+    });
+  }
 
   submitForm(): void {
     // Separar os emails por vírgula

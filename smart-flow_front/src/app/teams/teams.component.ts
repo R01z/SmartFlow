@@ -15,10 +15,10 @@ export class TeamsComponent implements OnInit{
   constructor(private dialog: MatDialog, private teamsService: TeamsService, private router: Router){}
 
   ngOnInit(): void {
-    this.loadTeams(); // Carrega os usuários ao inicializar o componente
+    this.loadTeams();
   }
 
-  openUserRegisterModal(): void {
+  openTeamRegisterModal(): void {
     this.dialog.open(TeamsRegisterComponent, {
       width: '600px' // Defina a largura da janela modal conforme necessário
     });
@@ -27,11 +27,18 @@ export class TeamsComponent implements OnInit{
   loadTeams(): void {
     this.teamsService.getAllTeams().subscribe(
       (data: any) => {
-        this.teams = data; // Atribui os usuários obtidos do serviço à variável 'users'
+        this.teams = data;
       },
       error => {
-        console.log('Error fetching users:', error);
+        console.log('Error fetching teams:', error);
       }
     );
+  }
+
+  editTeam(teamId: string): void {
+    this.dialog.open(TeamsRegisterComponent, {
+      width: '600px',
+      data: { teamId }
+    });
   }
 }
