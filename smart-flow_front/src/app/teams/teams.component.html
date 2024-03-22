@@ -1,3 +1,23 @@
 <app-menu></app-menu>
 
 <button class="create-team-button" (click)="openUserRegisterModal()">+ Criar Novo Time</button>
+
+<table class="team-table">
+    <caption>Lista de Times</caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teams">
+        <td>{{ team.teamId }}</td>
+        <td>{{ team.name }}</td>
+        <td>{{ team.description }}</td>
+        <td>Editar</td>
+      </tr>
+    </tbody>
+</table>

@@ -1,3 +1,44 @@
+.team-table {
+  margin: 0 auto; /* Centraliza a tabela na tela */
+  border-collapse: collapse; /* Colapso das bordas das células */
+  width: 80%; /* Define a largura da tabela */
+}
+
+.team-table caption {
+  font-weight: bold; /* Deixa o texto da legenda em negrito */
+  font-size: 1.2em; /* Ajusta o tamanho da fonte da legenda */
+  background-color: #F98903; /* Fundo laranja */
+  color: #ffffff; /* Letras brancas */
+  padding: 10px; /* Adiciona espaçamento interno à legenda */
+  caption-side: top; /* Coloca a legenda acima da tabela */
+  text-align: center;
+}
+
+.team-table th {
+  background-color: #F98903; /* Fundo laranja */
+  color: #ffffff; /* Letras brancas */
+  font-weight: bold; /* Deixa o texto em negrito */
+  border: 2px solid #F98903; /* Adiciona borda laranja aos cabeçalhos */
+  padding: 10px; /* Adiciona espaçamento interno aos cabeçalhos */
+}
+
+.team-table td {
+  border: 2px solid #F98903; /* Adiciona borda laranja às células */
+  padding: 10px; /* Adiciona espaçamento interno às células */
+}
+
+.team-table th,
+.team-table td {
+  text-align: center; /* Centraliza o conteúdo das células */
+}
+
+.team-table th,
+.team-table td {
+  /* Regule a espessura da linha aqui */
+  border-width: 2px; /* Espessura padrão da borda */
+  border-style: solid; /* Estilo da borda */
+}
+
 .create-team-button {
     background-color: #f98903; /* Fundo laranja */
     color: #ffffff; /* Letras brancas */
