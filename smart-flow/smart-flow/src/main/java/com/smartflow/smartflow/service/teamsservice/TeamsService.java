@@ -16,4 +16,6 @@ public interface TeamsService {
     Teams getTeamById(Integer teamId);
 
     String addMembers(Integer teamId, List<Integer> usersIds);
+
+    String addMembersByEmail(Integer teamId, List<String> emails);
 }

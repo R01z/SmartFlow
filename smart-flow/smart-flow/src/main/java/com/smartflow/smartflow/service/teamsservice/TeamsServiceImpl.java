@@ -25,8 +25,8 @@ public class TeamsServiceImpl implements TeamsService {
     public String addTeam(TeamDTO teamDTO) {
         List<User> members = new ArrayList<>();
 
-        for (User user : teamDTO.getMembers()) {
-            members.add(userRepository.findById(user.getUserId()).orElse(null));
+        for (String email : teamDTO.getMembersEmails()) {
+            members.add(userRepository.findByEmail(email));
         }
 
         Teams team = null;
@@ -72,6 +72,23 @@ public class TeamsServiceImpl implements TeamsService {
         Teams team = teamsRepository.findById(teamId).orElse(null);
 
         List<User> users = userRepository.findAllById(usersIds);
+
+        team.addMembers(users);
+
+        teamsRepository.save(team);
+
+        return "Members added";
+    }
+
+    @Override
+    public String addMembersByEmail(Integer teamId, List<String> emails) {
+        Teams team = teamsRepository.findById(teamId).orElse(null);
+
+        List<User> users = new ArrayList<>();
+
+        for (String email : emails) {
+            users.add(userRepository.findByEmail(email));
+        }
 
         team.addMembers(users);
 

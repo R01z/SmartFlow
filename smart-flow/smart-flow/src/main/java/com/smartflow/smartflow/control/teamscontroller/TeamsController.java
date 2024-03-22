@@ -32,8 +32,12 @@ public class TeamsController {
 
     @PostMapping("/{teamId}/addMembers")
     public String addMembersToTeam(@PathVariable Integer teamId, @RequestBody List<Integer> userIds) {
-        String message = teamsService.addMembers(teamId, userIds);
-        return message;
+        return teamsService.addMembers(teamId, userIds);
+    }
+
+    @PostMapping("/{teamId}/addMembersByEmail")
+    public String addMembersByEmailToTeam(@PathVariable Integer teamId, @RequestBody List<String> emails) {
+        return teamsService.addMembersByEmail(teamId, emails);
     }
 
     @GetMapping(path = "/getAllTeams")
