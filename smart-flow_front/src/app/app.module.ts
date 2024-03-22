@@ -14,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
 import { UserControlComponent } from './user-control/user-control.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { TeamsComponent } from './teams/teams.component';
+import { TeamsRegisterComponent } from './teams-register/teams-register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TeamsComponent } from './teams/teams.component';
     MenuComponent,
     UserControlComponent,
     UserRegisterComponent,
-    TeamsComponent
+    TeamsComponent,
+    TeamsRegisterComponent
   ],
   imports: [
     BrowserModule,

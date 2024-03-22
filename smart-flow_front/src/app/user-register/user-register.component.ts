@@ -50,10 +50,10 @@ export class UserRegisterComponent implements OnInit {
 
   submitForm(): void {
     console.log(this.userData);
-    // Envie os dados do formulário para o servidor usando HttpClient
+    // Enviar
     this.http.post('http://localhost:8090/api/v1/users/save', this.userData).subscribe(response => {
       console.log(response);
-      // Aqui você pode lidar com a resposta do servidor, por exemplo, exibindo uma mensagem de sucesso ou redirecionando para outra página
+      // Resposta
     });
   }
 
