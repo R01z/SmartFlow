@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="card">
+        <h1>{{ title }}</h1>
+        <form (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <label for="members">Membros (emails separados por vírgula):</label>
+                <textarea type="text" id="members" name="members" [(ngModel)]="memberEmails" required class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Salvar</button>
+        </form>
+    </div>
+</div>
+  

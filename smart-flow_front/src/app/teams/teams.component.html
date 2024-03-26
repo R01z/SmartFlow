@@ -10,6 +10,7 @@
         <th>Nome</th>
         <th>Descrição</th>
         <th>Editar</th>
+        <th>Adicionar Membros</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
         <td>{{ team.name }}</td>
         <td>{{ team.description }}</td>
         <td><button (click)="editTeam(team.teamId)">Editar</button></td>
+        <td><button (click)="addMembers(team.teamId)">Adicionar</button></td>
       </tr>
     </tbody>
 </table>

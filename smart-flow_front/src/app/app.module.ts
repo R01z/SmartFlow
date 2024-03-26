@@ -15,6 +15,7 @@ import { UserControlComponent } from './user-control/user-control.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamsRegisterComponent } from './teams-register/teams-register.component';
+import { AddTeamMembersComponent } from './add-team-members/add-team-members.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TeamsRegisterComponent } from './teams-register/teams-register.componen
     UserControlComponent,
     UserRegisterComponent,
     TeamsComponent,
-    TeamsRegisterComponent
+    TeamsRegisterComponent,
+    AddTeamMembersComponent
   ],
   imports: [
     BrowserModule,

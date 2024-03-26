@@ -3,6 +3,7 @@ import { TeamsRegisterComponent } from '../teams-register/teams-register.compone
 import { MatDialog } from '@angular/material/dialog';
 import { TeamsService } from '../teams.service';
 import { Router } from '@angular/router';
+import { AddTeamMembersComponent } from '../add-team-members/add-team-members.component';
 
 @Component({
   selector: 'app-teams',
@@ -37,6 +38,13 @@ export class TeamsComponent implements OnInit{
 
   editTeam(teamId: string): void {
     this.dialog.open(TeamsRegisterComponent, {
+      width: '600px',
+      data: { teamId }
+    });
+  }
+
+  addMembers(teamId: string): void {
+    this.dialog.open(AddTeamMembersComponent, {
       width: '600px',
       data: { teamId }
     });
