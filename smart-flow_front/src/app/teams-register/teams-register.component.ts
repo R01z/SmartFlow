@@ -46,4 +46,14 @@ export class TeamsRegisterComponent {
       // Aqui você pode lidar com a resposta do servidor, por exemplo, exibindo uma mensagem de sucesso ou redirecionando para outra página
     });
   }
+
+  deleteTeam(): void {
+    const teamId = this.data.teamId;
+    this.http.delete(`http://localhost:8090/api/v1/teams/deleteTeam/${teamId}`).subscribe(response => {
+      console.log('Time deletado com sucesso:', response);
+      this.dialogRef.close(); // Fecha a janela modal após a exclusão
+    }, error => {
+      console.error('Erro ao deletar o usuário:', error);
+    });
+  }
 }

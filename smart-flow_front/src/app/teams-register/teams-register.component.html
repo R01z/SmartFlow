@@ -14,6 +14,7 @@
           <label for="members">Membros (emails separados por vírgula):</label>
           <textarea type="text" id="members" name="members" [(ngModel)]="memberEmails" required class="form-control"></textarea>
         </div>
+        <button *ngIf="isEditMode" type="button" class="btn-delete" (click)="deleteTeam()">Deletar Time</button>
         <button type="submit" class="btn-primary">Salvar</button>
       </form>
     </div>
