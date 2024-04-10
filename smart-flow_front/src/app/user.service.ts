@@ -16,4 +16,8 @@ export class UserService {
   getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:8090/api/v1/users/getAllUsers');
   }
+
+  getUserTeams(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8090/api/v1/users/${userId}/teams`);
+  }
 }

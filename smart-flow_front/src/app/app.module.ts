@@ -16,6 +16,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamsRegisterComponent } from './teams-register/teams-register.component';
 import { AddTeamMembersComponent } from './add-team-members/add-team-members.component';
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AddTeamMembersComponent } from './add-team-members/add-team-members.com
     UserRegisterComponent,
     TeamsComponent,
     TeamsRegisterComponent,
-    AddTeamMembersComponent
+    AddTeamMembersComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,
