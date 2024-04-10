@@ -1,5 +1,6 @@
 package com.smartflow.smartflow.control.usercontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.smartflow.smartflow.dto.logindto.LoginDTO;
 import com.smartflow.smartflow.dto.userdto.UserDTO;
 import com.smartflow.smartflow.response.LoginResponse;
+import com.smartflow.smartflow.model.Teams;
 import com.smartflow.smartflow.model.User;
 import com.smartflow.smartflow.service.userservice.UserService;
 
@@ -78,4 +80,15 @@ public class UserController {
         }
     }
 
+    // Função para obter todos os times que um usuário faz parte
+    @GetMapping("/{userId}/teams")
+    public List<Teams> getUserTeams(@PathVariable Integer userId) {
+        User user = userService.getUserById(userId);
+        if (user != null) {
+            return user.getTeams();
+        } else {
+            // Lidar com o caso em que o usuário não foi encontrado
+            return new ArrayList<>();
+        }
+    }
 }

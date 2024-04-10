@@ -3,6 +3,8 @@ package com.smartflow.smartflow.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,6 +35,7 @@ public class Teams {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "teams_users", joinColumns = @JoinColumn(name = "teamId", referencedColumnName = "teamId"), inverseJoinColumns = @JoinColumn(name = "userId", referencedColumnName = "userId"))
+    // @JsonIgnore
     private List<User> members = new ArrayList<>();
 
     @Column(name = "description")
