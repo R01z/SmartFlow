@@ -18,6 +18,7 @@ import { TeamsRegisterComponent } from './teams-register/teams-register.componen
 import { AddTeamMembersComponent } from './add-team-members/add-team-members.component';
 import { TeamDetailsComponent } from './team-details/team-details.component';
 import { DropdownService } from './dropdown.service';
+import { TeamsService } from './teams.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { DropdownService } from './dropdown.service';
   exports: [
     UserRegisterComponent
   ],
-  providers: [UserService, DropdownService],
+  providers: [UserService, DropdownService, TeamsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
