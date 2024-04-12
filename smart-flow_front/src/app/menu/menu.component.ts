@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/team.model';
 import { UserService } from '../user.service';
+import { DropdownService } from '../dropdown.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +10,9 @@ import { UserService } from '../user.service';
 })
 export class MenuComponent implements OnInit {
   userTeams: Team[] = [];
+  dropdownOpen: boolean = false;
  
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private dropdownService: DropdownService) { }
 
   ngOnInit(): void {
     this.userService.getLoggedUser().subscribe(user => {
@@ -19,6 +21,19 @@ export class MenuComponent implements OnInit {
         this.userTeams = teams;
       });
     });
+
+    this.dropdownService.isOpen$.subscribe(isOpen => {
+      this.dropdownOpen = isOpen;
+    });
   }
+
+  toggleDropdown() {
+    if (this.dropdownOpen) {
+      this.dropdownService.closeDropdown();
+    } else {
+      this.dropdownService.openDropdown();
+    }
+  }
+  
 
 }

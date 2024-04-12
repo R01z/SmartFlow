@@ -1,43 +1,86 @@
 .menu {
-  background-color: #f98903; /* Fundo laranja */
-  color: #ffffff; /* Letras brancas */
+  background-color: #f98903;
+  color: #ffffff;
   display: flex;
-  align-items: center; /* Centraliza verticalmente os itens */
-  padding: 10px 20px; /* Adiciona espaçamento interno */
+  justify-content: flex-start; /* Alterado para alinhar à esquerda */
+  align-items: center;
+  padding: 10px 20px;
 }
 
 .logo {
-  margin-right: 50px; /* Adiciona espaçamento entre a logo e os links */
+  margin-right: 20px; /* Adiciona margem à direita para alinhar à esquerda */
 }
 
 .logo img {
-  width: 80px; /* Tamanho da logo */
+  width: 80px;
 }
 
 .links ul {
-  list-style-type: none; /* Remove os marcadores de lista */
+  list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 .links ul li {
-  display: inline; /* Exibe os itens em linha */
-  margin-right: 10px; /* Adiciona espaçamento entre os links */
-}
-
-.links ul li:last-child {
-  margin-right: 0; /* Remove o espaçamento do último link */
+  display: inline-block;
+  position: relative;
 }
 
 .links ul li a {
-  color: inherit; /* Herda a cor do texto definida para o menu */
-  text-decoration: none; /* Remove a sublinhado padrão dos links */
-  padding: 8px 12px; /* Adiciona espaçamento interno aos links */
-  border-radius: 4px; /* Adiciona bordas arredondadas aos links */
-  transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para a mudança de cor */
+  color: inherit;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .links ul li a:hover {
-  background-color: #ffffff; /* Muda o background para branco ao passar o mouse */
-  color: #f98903; /* Muda a cor do texto para laranja ao passar o mouse */
+  background-color: #ffffff;
+  color: #f98903;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropbtn:hover {
+  background-color: #ffffff;
+  color: #f98903;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f98903;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #f98903;
+  text-decoration: none;
+  display: block;
+  padding: 8px 12px;
+  transition: color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #f98903;
+  color: #ffffff;
+}
+
+.dropdown-content.show {
+  display: block;
 }
