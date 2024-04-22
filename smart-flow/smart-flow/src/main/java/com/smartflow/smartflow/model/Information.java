@@ -1,7 +1,6 @@
 package com.smartflow.smartflow.model;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
