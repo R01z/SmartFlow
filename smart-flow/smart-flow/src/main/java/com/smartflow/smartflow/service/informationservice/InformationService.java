@@ -9,6 +9,6 @@ public interface InformationService {
 
     Iterable<Information> findAll(Specification<Information> spec);
 
-    String addTeam(InformationDTO informationDTO);
+    String addInformation(InformationDTO informationDTO);
 
 }

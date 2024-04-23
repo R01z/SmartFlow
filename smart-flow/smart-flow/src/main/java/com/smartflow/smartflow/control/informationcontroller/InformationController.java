@@ -3,19 +3,22 @@ package com.smartflow.smartflow.control.informationcontroller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartflow.smartflow.dto.informationdto.InformationDTO;
 import com.smartflow.smartflow.model.Information;
-import com.smartflow.smartflow.repository.InformationRepository;
 import com.smartflow.smartflow.service.informationservice.InformationService;
 import com.smartflow.smartflow.specifications.InformationSpecifications;
 
 @RestController
+@CrossOrigin
+@RequestMapping("api/v1/information")
 public class InformationController {
 
     @Autowired
@@ -23,7 +26,7 @@ public class InformationController {
 
     @PostMapping(path = "/save")
     public String saveUsers(@RequestBody InformationDTO informationDTO) {
-        return informationService.addTeam(informationDTO);
+        return informationService.addInformation(informationDTO);
     }
 
     @GetMapping("/getInformations")
