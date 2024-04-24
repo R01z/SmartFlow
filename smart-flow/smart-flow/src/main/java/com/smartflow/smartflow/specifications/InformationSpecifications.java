@@ -19,4 +19,8 @@ public class InformationSpecifications {
         return (root, query, builder) -> builder.between(root.get("uploadDate"), startDate, endDate);
     }
 
+    public static Specification<Information> teamIdEquals(Integer teamId) {
+        return (root, query, builder) -> builder.equal(root.get("team").get("teamId"), teamId);
+    }
+
 }

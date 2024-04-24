@@ -12,4 +12,5 @@ public class InformationFilter {
     private String description;
     private Timestamp startDate;
     private Timestamp endDate;
+    private Integer teamId;
 }

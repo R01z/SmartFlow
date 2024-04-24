@@ -55,6 +55,10 @@ public class InformationController {
             spec = spec.and(InformationSpecifications.uploadDateBetween(filter.getStartDate(), endDate));
         }
 
+        if (filter.getTeamId() != null) {
+            spec = spec.and(InformationSpecifications.teamIdEquals(filter.getTeamId()));
+        }
+
         Iterable<Information> informations = informationService.findAll(spec);
 
         List<InformationResponse> response = new ArrayList<>();
