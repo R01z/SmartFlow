@@ -1,6 +1,7 @@
 package com.smartflow.smartflow.dto.informationdto;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,4 +14,5 @@ public class InformationFilter {
     private Timestamp startDate;
     private Timestamp endDate;
     private Integer teamId;
+    private List<String> tags;
 }

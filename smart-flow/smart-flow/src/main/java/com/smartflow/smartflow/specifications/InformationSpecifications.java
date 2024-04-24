@@ -1,6 +1,7 @@
 package com.smartflow.smartflow.specifications;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.data.jpa.domain.Specification;
 import com.smartflow.smartflow.model.Information;
@@ -21,6 +22,15 @@ public class InformationSpecifications {
 
     public static Specification<Information> teamIdEquals(Integer teamId) {
         return (root, query, builder) -> builder.equal(root.get("team").get("teamId"), teamId);
+    }
+
+    public static Specification<Information> tagsContain(List<String> tags) {
+        return (root, query, builder) -> {
+            if (tags == null || tags.isEmpty()) {
+                return null;
+            }
+            return root.join("tags").in(tags);
+        };
     }
 
 }
