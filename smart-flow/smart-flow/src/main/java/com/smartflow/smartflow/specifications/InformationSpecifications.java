@@ -1,7 +1,6 @@
 package com.smartflow.smartflow.specifications;
 
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.util.StringUtils;
 import com.smartflow.smartflow.model.Information;
 
 public class InformationSpecifications {

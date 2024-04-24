@@ -1,10 +1,14 @@
 package com.smartflow.smartflow.control.informationcontroller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartflow.smartflow.dto.informationdto.InformationDTO;
+import com.smartflow.smartflow.dto.informationdto.InformationFilter;
+import com.smartflow.smartflow.dto.informationdto.InformationResponse;
 import com.smartflow.smartflow.model.Information;
 import com.smartflow.smartflow.service.informationservice.InformationService;
 import com.smartflow.smartflow.specifications.InformationSpecifications;
@@ -30,18 +36,27 @@ public class InformationController {
     }
 
     @GetMapping("/getInformations")
-    public Iterable<Information> searchInformations(@RequestParam(required = false) String name,
-            @RequestParam(required = false) String description) {
+    public List<InformationResponse> searchInformations(@RequestBody InformationFilter filter) {
         Specification<Information> spec = Specification.where(null);
 
-        if (!StringUtils.isEmpty(name)) {
-            spec = spec.and(InformationSpecifications.nameContains(name));
+        System.out.println("NAME:" + filter.getName());
+        if (StringUtils.hasText(filter.getName())) {
+            System.out.println("Has name");
+            spec = spec.and(InformationSpecifications.nameContains(filter.getName()));
         }
 
-        if (!StringUtils.isEmpty(description)) {
-            spec = spec.and(InformationSpecifications.descriptionContains(description));
+        if (StringUtils.hasText(filter.getDescription())) {
+            spec = spec.and(InformationSpecifications.descriptionContains(filter.getDescription()));
         }
 
-        return informationService.findAll(spec);
+        System.out.println("SPEC: " + spec.toString());
+
+        Iterable<Information> informations = informationService.findAll(spec);
+
+        List<InformationResponse> response = new ArrayList<>();
+
+        informations.forEach(information -> response.add(new InformationResponse(information)));
+
+        return response;
     }
 }
