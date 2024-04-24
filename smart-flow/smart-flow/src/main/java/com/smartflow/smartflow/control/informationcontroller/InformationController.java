@@ -1,5 +1,6 @@
 package com.smartflow.smartflow.control.informationcontroller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +40,7 @@ public class InformationController {
     public List<InformationResponse> searchInformations(@RequestBody InformationFilter filter) {
         Specification<Information> spec = Specification.where(null);
 
-        System.out.println("NAME:" + filter.getName());
         if (StringUtils.hasText(filter.getName())) {
-            System.out.println("Has name");
             spec = spec.and(InformationSpecifications.nameContains(filter.getName()));
         }
 
@@ -49,7 +48,12 @@ public class InformationController {
             spec = spec.and(InformationSpecifications.descriptionContains(filter.getDescription()));
         }
 
-        System.out.println("SPEC: " + spec.toString());
+        if (filter.getStartDate() != null) {
+            Timestamp endDate = filter.getEndDate() != null ? filter.getEndDate()
+                    : new Timestamp(System.currentTimeMillis());
+
+            spec = spec.and(InformationSpecifications.uploadDateBetween(filter.getStartDate(), endDate));
+        }
 
         Iterable<Information> informations = informationService.findAll(spec);
 
