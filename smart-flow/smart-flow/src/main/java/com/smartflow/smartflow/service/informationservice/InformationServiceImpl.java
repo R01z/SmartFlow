@@ -45,4 +45,13 @@ public class InformationServiceImpl implements InformationService {
         return "";
     }
 
+    public boolean deleteInformationById(Integer id) {
+        if (informationRepository.existsById(id)) {
+            informationRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

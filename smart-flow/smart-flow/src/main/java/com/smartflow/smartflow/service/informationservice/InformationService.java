@@ -11,4 +11,5 @@ public interface InformationService {
 
     String addInformation(InformationDTO informationDTO);
 
+    public boolean deleteInformationById(Integer id);
 }
