@@ -11,6 +11,8 @@ import lombok.Setter;
 @Data
 public class InformationDTO {
 
+    private Integer informationId;
+
     private String name;
 
     private String description;

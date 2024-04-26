@@ -34,11 +34,16 @@ public class InformationServiceImpl implements InformationService {
         information.setDescription(informationDTO.getDescription());
         information.setLink(informationDTO.getLink());
         information.setFile(informationDTO.getFile());
-        information.setUploadDate(new Timestamp(System.currentTimeMillis()));
         information.setTags(informationDTO.getTags());
 
         Teams team = teamsRepository.getReferenceById(informationDTO.getTeamId());
         information.setTeam(team);
+
+        if (informationDTO.getInformationId() != null) {
+            information.setInformationId(informationDTO.getInformationId());
+        } else {
+            information.setUploadDate(new Timestamp(System.currentTimeMillis()));
+        }
 
         informationRepository.save(information);
 
