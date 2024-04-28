@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/team.model';
 import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../teams.service';
+import { AddInformationComponent } from '../add-information/add-information.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-team-details',
@@ -11,7 +13,7 @@ import { TeamsService } from '../teams.service';
 export class TeamDetailsComponent implements OnInit {
   team: Team;
 
-  constructor(private route: ActivatedRoute, private teamsService: TeamsService) {
+  constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog) {
     this.team = {} as Team;
    }
 
@@ -36,5 +38,13 @@ export class TeamDetailsComponent implements OnInit {
     this.teamsService.getTeamDetails(teamId).subscribe(team => {
       this.team = team;
     });
+  }
+
+  openAddInformationModal(): void {
+    const dialogRef = this.dialog.open(AddInformationComponent, {
+      width: '600px', // Defina a largura da janela modal conforme necessário
+      data: { teamId: this.team.teamId } // Passe o ID do time para o modal
+    });
+
   }
 }

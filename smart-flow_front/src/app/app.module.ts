@@ -19,6 +19,7 @@ import { AddTeamMembersComponent } from './add-team-members/add-team-members.com
 import { TeamDetailsComponent } from './team-details/team-details.component';
 import { DropdownService } from './dropdown.service';
 import { TeamsService } from './teams.service';
+import { AddInformationComponent } from './add-information/add-information.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TeamsService } from './teams.service';
     TeamsComponent,
     TeamsRegisterComponent,
     AddTeamMembersComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
+    AddInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { TeamsService } from './teams.service';
     MatDialogModule
   ],
   exports: [
-    UserRegisterComponent
+    UserRegisterComponent,
+    AddInformationComponent
   ],
   providers: [UserService, DropdownService, TeamsService],
   bootstrap: [AppComponent]
