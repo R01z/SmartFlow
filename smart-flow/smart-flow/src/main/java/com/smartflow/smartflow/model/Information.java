@@ -36,9 +36,8 @@ public class Information {
     @Column(name = "uploadDate")
     private Timestamp uploadDate;
 
-    @Lob
-    @Column(name = "file")
-    private byte[] file;
+    @Column(name = "filePath") // Armazenar o caminho do arquivo no sistema de arquivos
+    private String filePath;
 
     @Column(name = "link")
     private String link;
@@ -53,13 +52,13 @@ public class Information {
     public Information() {
     }
 
-    public Information(Integer informationId, String name, String description, Timestamp uploadDate, byte[] file,
+    public Information(Integer informationId, String name, String description, Timestamp uploadDate, String filePath,
             String link, Teams team, List<String> tags) {
         this.informationId = informationId;
         this.name = name;
         this.description = description;
         this.uploadDate = uploadDate;
-        this.file = file;
+        this.filePath = filePath;
         this.link = link;
         this.team = team;
         this.tags = tags;

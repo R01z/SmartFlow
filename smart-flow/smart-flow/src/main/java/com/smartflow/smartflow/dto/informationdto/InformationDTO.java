@@ -27,12 +27,4 @@ public class InformationDTO {
     private Integer teamId;
 
     private List<String> tags;
-
-    public byte[] getFileBytes() throws IOException {
-        if (file != null) {
-            return file.getBytes();
-        } else {
-            return null;
-        }
-    }
 }

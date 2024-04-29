@@ -1,11 +1,13 @@
 package com.smartflow.smartflow.service.informationservice;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.smartflow.smartflow.dto.informationdto.InformationDTO;
 import com.smartflow.smartflow.model.Information;
@@ -22,6 +24,8 @@ public class InformationServiceImpl implements InformationService {
     @Autowired
     TeamsRepository teamsRepository;
 
+    private static final String BASE_DIRECTORY = "D:\\SmartFlowFiles\\";
+
     @Override
     public Iterable<Information> findAll(Specification<Information> spec) {
         return informationRepository.findAll(spec);
@@ -36,19 +40,43 @@ public class InformationServiceImpl implements InformationService {
         information.setLink(informationDTO.getLink());
         information.setTags(informationDTO.getTags());
 
-        try {
-            information.setFile(informationDTO.getFileBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         Teams team = teamsRepository.getReferenceById(informationDTO.getTeamId());
         information.setTeam(team);
 
         if (informationDTO.getInformationId() != null) {
-            information.setInformationId(informationDTO.getInformationId());
+            // Atualização de uma informação existente
+            information = informationRepository.findById(informationDTO.getInformationId())
+                    .orElseThrow(() -> new RuntimeException("Information not found"));
+            information.setUploadDate(new Timestamp(System.currentTimeMillis())); // Atualiza a data de upload
+
         } else {
-            information.setUploadDate(new Timestamp(System.currentTimeMillis()));
+            // Criação de uma nova informação
+            information.setUploadDate(new Timestamp(System.currentTimeMillis())); // Define a data de upload
+        }
+
+        MultipartFile file = informationDTO.getFile();
+        if (file != null && !file.isEmpty()) {
+            try {
+                // Cria o diretório com base no teamId, se não existir
+                String teamDirectoryPath = BASE_DIRECTORY + informationDTO.getTeamId() + "\\";
+                File teamDirectory = new File(teamDirectoryPath);
+                if (!teamDirectory.exists()) {
+                    teamDirectory.mkdirs(); // Cria o diretório e todos os diretórios pais, se necessário
+                }
+
+                // Define o caminho de destino para salvar o arquivo dentro do diretório do time
+                String filePath = teamDirectoryPath + file.getOriginalFilename();
+
+                // Salva o arquivo no diretório do time
+                File destFile = new File(filePath);
+                file.transferTo(destFile);
+
+                // Define o caminho do arquivo no objeto Information
+                information.setFilePath(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Trate o erro conforme necessário
+            }
         }
 
         informationRepository.save(information);

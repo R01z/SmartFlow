@@ -15,7 +15,7 @@ public class InformationResponse {
     private String name;
     private String description;
     private Timestamp uploadDate;
-    private byte[] file;
+    private String file;
     private String link;
     private Integer teamId;
     private List<String> tags;
@@ -25,7 +25,7 @@ public class InformationResponse {
         this.name = information.getName();
         this.description = information.getDescription();
         this.uploadDate = information.getUploadDate();
-        this.file = information.getFile();
+        this.file = information.getFilePath();
         this.link = information.getLink();
         this.teamId = information.getTeam().getTeamId();
         this.tags = information.getTags();
