@@ -1,1 +1,39 @@
-<button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
+<!---<div class="container">
+    <h1>{{ team.name }}</h1>
+    <div>
+      <p>{{ team.description }}</p>
+    </div>-->
+  
+    <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
+  
+    <!---<h2>Informações</h2>
+    <table class="information-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Data de Upload</th>
+          <th>Arquivo</th>
+          <th>Link</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let info of teamInformations">
+          <td>{{ info.informationId }}</td>
+          <td>{{ info.name }}</td>
+          <td>{{ info.description }}</td>
+          <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <a *ngIf="info.file" [href]="getDownloadUrl(info.file)">Download</a>
+          </td>
+          <td>
+            <a *ngIf="info.link" [href]="info.link" target="_blank">Abrir</a>
+          </td>
+          <td>{{ info.tags.join(', ') }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>-->
+  

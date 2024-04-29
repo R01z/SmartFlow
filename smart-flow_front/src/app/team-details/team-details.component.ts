@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../teams.service';
 import { AddInformationComponent } from '../add-information/add-information.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Information } from '../models/information.model';
+import { InformationFilter } from '../models/information-filter.model';
 
 @Component({
   selector: 'app-team-details',
@@ -12,9 +14,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TeamDetailsComponent implements OnInit {
   team: Team;
+  teamInformations: Information[];
 
   constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog) {
     this.team = {} as Team;
+    this.teamInformations = [];
    }
 
   ngOnInit(): void {
@@ -25,6 +29,7 @@ export class TeamDetailsComponent implements OnInit {
         if (!isNaN(teamId)) {
           // Carregue os detalhes do time com o novo 'teamId'
           this.loadTeamDetails(teamId);
+          //this.loadTeamInformation(teamId);
         } else {
           console.error('O parâmetro "teamId" não é um número válido.');
         }
@@ -47,4 +52,13 @@ export class TeamDetailsComponent implements OnInit {
     });
 
   }
+
+  /*loadTeamInformation(teamId: number): void {
+    const filter: InformationFilter = {
+      teamId: teamId
+    };
+    this.teamsService.getTeamInformation(filter).subscribe(informations => {
+      this.teamInformations = informations;
+    });
+  }*/
 }
