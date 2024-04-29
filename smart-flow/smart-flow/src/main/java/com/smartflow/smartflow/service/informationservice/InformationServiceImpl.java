@@ -1,5 +1,6 @@
 package com.smartflow.smartflow.service.informationservice;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,13 @@ public class InformationServiceImpl implements InformationService {
         information.setName(informationDTO.getName());
         information.setDescription(informationDTO.getDescription());
         information.setLink(informationDTO.getLink());
-        information.setFile(informationDTO.getFile());
         information.setTags(informationDTO.getTags());
+
+        try {
+            information.setFile(informationDTO.getFileBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Teams team = teamsRepository.getReferenceById(informationDTO.getTeamId());
         information.setTeam(team);

@@ -35,7 +35,7 @@ public class InformationController {
     private InformationService informationService;
 
     @PostMapping(path = "/save")
-    public String saveUsers(@RequestBody InformationDTO informationDTO) {
+    public String saveInfo(@ModelAttribute InformationDTO informationDTO) {
         return informationService.addInformation(informationDTO);
     }
 

@@ -1,6 +1,9 @@
 package com.smartflow.smartflow.dto.informationdto;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 import lombok.Getter;
@@ -19,9 +22,17 @@ public class InformationDTO {
 
     private String link;
 
-    private byte[] file;
+    private MultipartFile file;
 
     private Integer teamId;
 
     private List<String> tags;
+
+    public byte[] getFileBytes() throws IOException {
+        if (file != null) {
+            return file.getBytes();
+        } else {
+            return null;
+        }
+    }
 }
