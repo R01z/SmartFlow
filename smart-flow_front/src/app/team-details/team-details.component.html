@@ -1,13 +1,17 @@
 <div class="container">
-    <h1>{{ team.name }}</h1>
-    <div>
-      <p>{{ team.description }}</p>
+  <div class="team-details">
+    <div class="team-info">
+      <h2 class="team-name">{{ team.name }}</h2>
+      <p class="team-description">{{ team.description }}</p>
     </div>
+  </div>
   
-    <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
-  
-    <h2>Informações</h2>
+
+  <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
+
+  <div class="information-table-container">
     <table class="information-table">
+      <caption>Informações do Time</caption>
       <thead>
         <tr>
           <th>ID</th>
@@ -41,4 +45,4 @@
       </tbody>
     </table>
   </div>
-  
+</div>

@@ -1,3 +1,31 @@
+.container {
+  padding: 20px;
+}
+
+.team-details {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.team-info {
+  text-align: center;
+}
+
+.team-name {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.team-description {
+  font-size: 16px;
+  color: #666;
+}
+
+
 .add-info-button {
     background-color: #f98903; /* Fundo laranja */
     color: #ffffff; /* Letras brancas */
@@ -16,4 +44,45 @@
     color: #f98903; /* Muda a cor do texto para laranja ao passar o mouse */
     border-color: #f98903;
     box-shadow: 0 0 10px 0 #f98903;
+  }
+
+  .information-table {
+    margin: 0 auto; /* Centraliza a tabela na tela */
+    border-collapse: collapse; /* Colapso das bordas das células */
+    width: 80%; /* Define a largura da tabela */
+  }
+  
+  .information-table caption {
+    font-weight: bold; /* Deixa o texto da legenda em negrito */
+    font-size: 1.2em; /* Ajusta o tamanho da fonte da legenda */
+    background-color: #F98903; /* Fundo laranja */
+    color: #ffffff; /* Letras brancas */
+    padding: 10px; /* Adiciona espaçamento interno à legenda */
+    caption-side: top; /* Coloca a legenda acima da tabela */
+    text-align: center;
+  }
+  
+  .information-table th {
+    background-color: #F98903; /* Fundo laranja */
+    color: #ffffff; /* Letras brancas */
+    font-weight: bold; /* Deixa o texto em negrito */
+    border: 2px solid #F98903; /* Adiciona borda laranja aos cabeçalhos */
+    padding: 10px; /* Adiciona espaçamento interno aos cabeçalhos */
+  }
+  
+  .information-table td {
+    border: 2px solid #F98903; /* Adiciona borda laranja às células */
+    padding: 10px; /* Adiciona espaçamento interno às células */
+  }
+  
+  .information-table th,
+  .information-table td {
+    text-align: center; /* Centraliza o conteúdo das células */
+  }
+  
+  .information-table th,
+  .information-table td {
+    /* Regule a espessura da linha aqui */
+    border-width: 2px; /* Espessura padrão da borda */
+    border-style: solid; /* Estilo da borda */
   }
