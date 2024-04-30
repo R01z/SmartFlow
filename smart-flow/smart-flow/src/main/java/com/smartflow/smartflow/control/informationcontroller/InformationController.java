@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartflow.smartflow.dto.informationdto.InformationDTO;
@@ -40,7 +39,7 @@ public class InformationController {
     }
 
     @GetMapping("/getInformations")
-    public List<InformationResponse> searchInformations(@RequestBody InformationFilter filter) {
+    public List<InformationResponse> searchInformations(InformationFilter filter) {
         Specification<Information> spec = Specification.where(null);
 
         if (StringUtils.hasText(filter.getName())) {

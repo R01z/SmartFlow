@@ -29,7 +29,7 @@ export class TeamDetailsComponent implements OnInit {
         if (!isNaN(teamId)) {
           // Carregue os detalhes do time com o novo 'teamId'
           this.loadTeamDetails(teamId);
-          //this.loadTeamInformation(teamId);
+          this.loadTeamInformation(teamId);
         } else {
           console.error('O parâmetro "teamId" não é um número válido.');
         }
@@ -53,12 +53,23 @@ export class TeamDetailsComponent implements OnInit {
 
   }
 
-  /*loadTeamInformation(teamId: number): void {
+  loadTeamInformation(teamId: number): void {
     const filter: InformationFilter = {
       teamId: teamId
     };
     this.teamsService.getTeamInformation(filter).subscribe(informations => {
       this.teamInformations = informations;
     });
-  }*/
+  }  
+
+  getDownloadUrl(informationId: number): string {
+    return `http://localhost:8090/api/v1/file/download/${informationId}`;
+  }
+  
+  formatLink(link: string): string {
+    if (!/^https?:\/\//i.test(link)) {
+      return 'http://' + link;
+    }
+    return link;
+  }
 }

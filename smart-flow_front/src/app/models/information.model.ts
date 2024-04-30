@@ -3,7 +3,7 @@ export interface Information {
     name: string;
     description: string;
     uploadDate: Date;
-    file?: File;
+    file?: string;
     link?: string;
     tags: string[];
   }

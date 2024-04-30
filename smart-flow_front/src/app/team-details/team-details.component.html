@@ -1,12 +1,12 @@
-<!---<div class="container">
+<div class="container">
     <h1>{{ team.name }}</h1>
     <div>
       <p>{{ team.description }}</p>
-    </div>-->
+    </div>
   
     <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
   
-    <!---<h2>Informações</h2>
+    <h2>Informações</h2>
     <table class="information-table">
       <thead>
         <tr>
@@ -26,14 +26,19 @@
           <td>{{ info.description }}</td>
           <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
           <td>
-            <a *ngIf="info.file" [href]="getDownloadUrl(info.file)">Download</a>
+            <ng-container *ngIf="info.file">
+              <a [href]="getDownloadUrl(info.informationId)">Download</a>
+            </ng-container>
+            <ng-container *ngIf="!info.file">
+              -
+            </ng-container>
           </td>
           <td>
-            <a *ngIf="info.link" [href]="info.link" target="_blank">Abrir</a>
+            <a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">Abrir</a>
           </td>
           <td>{{ info.tags.join(', ') }}</td>
         </tr>
       </tbody>
     </table>
-  </div>-->
+  </div>
   
