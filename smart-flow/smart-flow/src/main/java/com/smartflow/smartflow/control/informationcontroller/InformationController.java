@@ -57,8 +57,8 @@ public class InformationController {
             spec = spec.and(InformationSpecifications.uploadDateBetween(filter.getStartDate(), endDate));
         }
 
-        if (filter.getTeamId() != null) {
-            spec = spec.and(InformationSpecifications.teamIdEquals(filter.getTeamId()));
+        if (filter.getTeamId() != null && !filter.getTeamId().isEmpty()) {
+            spec = spec.and(InformationSpecifications.teamIdIn(filter.getTeamId()));
         }
 
         if (filter.getTags() != null && !filter.getTags().isEmpty()) {

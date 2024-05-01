@@ -3,7 +3,7 @@ export interface InformationFilter {
     description?: string;
     startDate?: Date;
     endDate?: Date;
-    teamId?: number;
+    teamId?: number[];
     tags?: string[];
   }
   

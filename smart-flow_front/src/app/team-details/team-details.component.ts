@@ -55,12 +55,12 @@ export class TeamDetailsComponent implements OnInit {
 
   loadTeamInformation(teamId: number): void {
     const filter: InformationFilter = {
-      teamId: teamId
+        teamId: [teamId] // Convertendo o teamId em uma lista
     };
     this.teamsService.getTeamInformation(filter).subscribe(informations => {
-      this.teamInformations = informations;
+        this.teamInformations = informations;
     });
-  }  
+} 
 
   getDownloadUrl(informationId: number): string {
     return `http://localhost:8090/api/v1/file/download/${informationId}`;

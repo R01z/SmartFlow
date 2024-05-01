@@ -13,6 +13,6 @@ public class InformationFilter {
     private String description;
     private Timestamp startDate;
     private Timestamp endDate;
-    private Integer teamId;
+    private List<Integer> teamId;
     private List<String> tags;
 }
