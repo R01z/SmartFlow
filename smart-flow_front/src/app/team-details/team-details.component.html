@@ -21,6 +21,7 @@
           <th>Arquivo</th>
           <th>Link</th>
           <th>Tags</th>
+          <th>Remover</th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +42,7 @@
             <a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">Abrir</a>
           </td>
           <td>{{ info.tags.join(', ') }}</td>
+          <td><button (click)="deleteInfo(info.informationId)">Deletar</button></td>
         </tr>
       </tbody>
     </table>
