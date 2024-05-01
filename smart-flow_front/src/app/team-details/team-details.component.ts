@@ -6,6 +6,7 @@ import { AddInformationComponent } from '../add-information/add-information.comp
 import { MatDialog } from '@angular/material/dialog';
 import { Information } from '../models/information.model';
 import { InformationFilter } from '../models/information-filter.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-team-details',
@@ -15,8 +16,9 @@ import { InformationFilter } from '../models/information-filter.model';
 export class TeamDetailsComponent implements OnInit {
   team: Team;
   teamInformations: Information[];
+  dialogRef: any;
 
-  constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog, private http: HttpClient) {
     this.team = {} as Team;
     this.teamInformations = [];
    }
@@ -72,4 +74,15 @@ export class TeamDetailsComponent implements OnInit {
     }
     return link;
   }
+
+  deleteInfo(informationId: number): void {
+    this.http.delete(`http://localhost:8090/api/v1/information/delete/${informationId}`, { responseType: 'text' }).subscribe((response: string) => {
+      console.log('Informação deletada com sucesso:', response);
+      // Atualiza a página
+      window.location.reload();
+    }, (error: any) => {
+      console.error('Erro ao deletar informação:', error);
+    });
+  }
+  
 }
