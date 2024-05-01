@@ -83,4 +83,16 @@ public class InformationController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/getInformationById/{id}")
+    public ResponseEntity<InformationResponse> getInformationById(@PathVariable Integer id) {
+        Information information = informationService.findInformationById(id);
+        if (information != null) {
+            InformationResponse response = new InformationResponse(information);
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

@@ -93,4 +93,15 @@ public class InformationServiceImpl implements InformationService {
         }
     }
 
+    @Override
+    public Information findInformationById(Integer id) {
+        Information information = new Information();
+        if (informationRepository.existsById(id)) {
+            information = informationRepository.getReferenceById(id);
+            return information;
+        } else {
+            return null;
+        }
+    }
+
 }
