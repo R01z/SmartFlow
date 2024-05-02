@@ -26,7 +26,7 @@ public class TeamsController {
     private TeamsService teamsService;
 
     @PostMapping(path = "/save")
-    public String saveUsers(@RequestBody TeamDTO teamDTO) {
+    public String saveTeam(@RequestBody TeamDTO teamDTO) {
         return teamsService.addTeam(teamDTO);
     }
 
