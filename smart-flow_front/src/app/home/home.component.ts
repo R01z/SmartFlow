@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getLoggedUser().subscribe((user: any) => {
       this.userName = user.name;
-      this.loadUserTeams(user.id);
+      this.loadUserTeams(user.userId);
     });
   }
 
