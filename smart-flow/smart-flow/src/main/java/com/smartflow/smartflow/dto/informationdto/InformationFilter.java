@@ -11,8 +11,8 @@ import lombok.Setter;
 public class InformationFilter {
     private String name;
     private String description;
-    private Timestamp startDate;
-    private Timestamp endDate;
+    private String startDate;
+    private String endDate;
     private List<Integer> teamId;
     private List<String> tags;
 }

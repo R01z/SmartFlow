@@ -1,0 +1,55 @@
+.btn-primary {
+    width: 10%;
+    margin-top: 20px; /* Adiciona espaçamento superior para separar o botão do campo de senha */
+    background-color: #F98903;
+    border-color: #F98903;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e63e00;
+    border-color: #e63e00;
+  }
+
+  /* Estilo para a página principal */
+.home-container {
+    margin: 40px; /* Margem geral em torno de todos os elementos */
+  }
+  
+  /* Estilo para os filtros de pesquisa */
+  .filter-container {
+    margin-bottom: 20px; /* Margem inferior para separar os filtros do botão de pesquisa */
+  }
+  
+  /* Estilo para os resultados da pesquisa */
+  .results-container {
+    margin-top: 20px; /* Margem superior para separar os resultados dos filtros */
+  }
+  
+  /* Estilo para a tabela de resultados */
+  .results-table {
+    width: 100%;
+    border-collapse: collapse; /* Mesclar as bordas da tabela */
+  }
+  
+  /* Estilo para as células da tabela */
+  .results-table th, .results-table td {
+    border: 1px solid #ddd; /* Borda das células */
+    padding: 8px; /* Espaçamento interno das células */
+    text-align: left; /* Alinhamento do texto à esquerda */
+  }
+  
+  /* Estilo para as células do cabeçalho da tabela */
+  .results-table th {
+    background-color: #f2f2f2; /* Cor de fundo do cabeçalho da tabela */
+  }
+  
+  .filter-field{
+    margin-right: 30px;
+    margin-left: 5px;
+  }
+
+  .fields-group{
+    margin-bottom: 30px;
+  }

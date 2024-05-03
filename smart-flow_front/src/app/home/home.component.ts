@@ -47,6 +47,13 @@ export class HomeComponent implements OnInit {
     this.processTags();
     this.searchFilters.teamId = this.selectedTeams.length > 0 ? this.selectedTeams : undefined;
 
+    if (this.searchFilters.startDate) {
+      this.searchFilters.startDate = new Date(this.searchFilters.startDate);
+    }
+    if (this.searchFilters.endDate) {
+      this.searchFilters.endDate = new Date(this.searchFilters.endDate);
+    }
+
     // Realizar busca com base nos filtros preenchidos
     this.informationService.searchInformations(this.searchFilters).subscribe((results: Information[]) => {
       this.informationResults = results;

@@ -1,53 +1,64 @@
-<div>
-    Bem-vindo, {{ userName }}
-</div>
-  
-<div>
+<div class="home-container">
+  <div>
+      Bem-vindo, {{ userName }}
+  </div>
+    
+  <div class="filter-container">
     <!-- Filtros de Pesquisa -->
     <h2>Filtros de Pesquisa</h2>
-    <label for="nameInput">Nome:</label>
-    <input id="nameInput" type="text" [(ngModel)]="searchFilters.name">
+    
+    <div class="fields-group">
+      <label for="nameInput">Nome:</label>
+      <input class="filter-field" id="nameInput" type="text" [(ngModel)]="searchFilters.name">
 
-    <label for="descriptionInput">Descrição:</label>
-    <input id="descriptionInput" type="text" [(ngModel)]="searchFilters.description">
+      <label for="startDateInput">Data de Início:</label>
+      <input class="filter-field" id="startDateInput" type="date" [(ngModel)]="searchFilters.startDate">
 
-    <label for="startDateInput">Data de Início:</label>
-    <input id="startDateInput" type="date" [(ngModel)]="searchFilters.startDate">
+      <label for="endDateInput">Data de Fim:</label>
+      <input class="filter-field" id="endDateInput" type="date" [(ngModel)]="searchFilters.endDate">
+    </div>
 
-    <label for="endDateInput">Data de Fim:</label>
-    <input id="endDateInput" type="date" [(ngModel)]="searchFilters.endDate">
+    <div class="fields-group">
+      <label for="descriptionInput">Descrição:</label>
+      <input class="filter-field" id="descriptionInput" type="text" [(ngModel)]="searchFilters.description">
+    
+      <label for="tagsInput">Tags:</label>
+      <input class="filter-field" id="tagsInput" type="text" [(ngModel)]="tags" placeholder="Insira as tags separadas por vírgula">
+    </div>
 
-    <label for="teamSelect">Times:</label>
-    <select id="teamSelect" multiple [(ngModel)]="selectedTeams">
-      <option *ngFor="let team of userTeams" [ngValue]="team.teamId">{{ team.name }}</option>
-    </select>
-  
-    <label for="tagsInput">Tags:</label>
-    <input id="tagsInput" type="text" [(ngModel)]="tags" placeholder="Insira as tags separadas por vírgula">
-  
+    <div class="fields-group">
+      <label for="teamSelect">Times:</label>
+      <select class="filter-field" id="teamSelect" multiple [(ngModel)]="selectedTeams">
+        <option *ngFor="let team of userTeams" [ngValue]="team.teamId">{{ team.name }}</option>
+      </select>
+    </div>
+
     <!-- Botão de Pesquisa -->
-    <button (click)="search()">Buscar</button>
-</div>
-
-<div *ngIf="showResults">
-    <!-- Resultados da Pesquisa -->
-    <h2>Resultados da Pesquisa</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Descrição</th>
-          <th>Link</th>
-          <!-- Adicione mais colunas conforme necessário -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let info of informationResults">
-          <td>{{ info.name }}</td>
-          <td>{{ info.description }}</td>
-          <td><a href="{{ info.link }}" target="_blank">{{ info.link }}</a></td>
-          <!-- Adicione mais colunas conforme necessário -->
-        </tr>
-      </tbody>
-    </table>
+    <button class="btn btn-primary" (click)="search()">Buscar</button>
   </div>
+
+  
+
+  <div class="results-container" *ngIf="showResults">
+      <!-- Resultados da Pesquisa -->
+      <h2>Resultados da Pesquisa</h2>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Link</th>
+            <!-- Adicione mais colunas conforme necessário -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let info of informationResults">
+            <td>{{ info.name }}</td>
+            <td>{{ info.description }}</td>
+            <td><a href="{{ info.link }}" target="_blank">{{ info.link }}</a></td>
+            <!-- Adicione mais colunas conforme necessário -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

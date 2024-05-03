@@ -1,6 +1,7 @@
 package com.smartflow.smartflow.control.informationcontroller;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import com.smartflow.smartflow.dto.informationdto.InformationResponse;
 import com.smartflow.smartflow.model.Information;
 import com.smartflow.smartflow.service.informationservice.InformationService;
 import com.smartflow.smartflow.specifications.InformationSpecifications;
+import com.smartflow.smartflow.util.DateUtil;
 
 @RestController
 @CrossOrigin
@@ -49,11 +51,16 @@ public class InformationController {
             spec = spec.and(InformationSpecifications.descriptionContains(filter.getDescription()));
         }
 
-        if (filter.getStartDate() != null) {
-            Timestamp endDate = filter.getEndDate() != null ? filter.getEndDate()
-                    : new Timestamp(System.currentTimeMillis());
+        try {
+            if (filter.getStartDate() != null) {
+                Timestamp endDate = filter.getEndDate() != null ? DateUtil.convertStringToTimestamp(filter.getEndDate())
+                        : new Timestamp(System.currentTimeMillis());
 
-            spec = spec.and(InformationSpecifications.uploadDateBetween(filter.getStartDate(), endDate));
+                spec = spec.and(InformationSpecifications
+                        .uploadDateBetween(DateUtil.convertStringToTimestamp(filter.getStartDate()), endDate));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         if (filter.getTeamId() != null && !filter.getTeamId().isEmpty()) {
