@@ -20,6 +20,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
 import { DropdownService } from './dropdown.service';
 import { TeamsService } from './teams.service';
 import { AddInformationComponent } from './add-information/add-information.component';
+import { InformationDetailsComponent } from './information-details/information-details.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AddInformationComponent } from './add-information/add-information.compo
     TeamsRegisterComponent,
     AddTeamMembersComponent,
     TeamDetailsComponent,
-    AddInformationComponent
+    AddInformationComponent,
+    InformationDetailsComponent
   ],
   imports: [
     BrowserModule,

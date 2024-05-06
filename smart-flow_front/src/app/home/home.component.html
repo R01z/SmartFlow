@@ -46,17 +46,28 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Descrição</th>
+            <th>Upload</th>
+            <th>Arquivo</th>
             <th>Link</th>
-            <!-- Adicione mais colunas conforme necessário -->
+            <th>Detalhes</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let info of informationResults">
             <td>{{ info.name }}</td>
-            <td>{{ info.description }}</td>
+            <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <ng-container *ngIf="info.file">
+                <a [href]="getDownloadUrl(info.informationId)">Download</a>
+              </ng-container>
+              <ng-container *ngIf="!info.file">
+                -
+              </ng-container>
+            </td>
             <td><a href="{{ info.link }}" target="_blank">{{ info.link }}</a></td>
-            <!-- Adicione mais colunas conforme necessário -->
+            <td>
+              <button class="btn btn-primary" (click)="openDetailsModal(info)">Detalhes</button>
+            </td>            
           </tr>
         </tbody>
       </table>

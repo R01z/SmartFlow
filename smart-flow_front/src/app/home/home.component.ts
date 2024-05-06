@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../user.service';
 import { InformationFilter } from '../models/information-filter.model';
 import { Information } from '../models/information.model';
 import { InformationService } from '../information.service';
 import { Team } from '../models/team.model';
+import { InformationDetailsComponent } from '../information-details/information-details.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
   selectedTeams: number[] = [];
   tags: string = '';
 
-  constructor(private userService: UserService, private informationService: InformationService) { }
+  constructor(private dialog: MatDialog, private userService: UserService, private informationService: InformationService) { }
 
   ngOnInit(): void {
     this.userService.getLoggedUser().subscribe((user: any) => {
@@ -60,4 +62,20 @@ export class HomeComponent implements OnInit {
       this.showResults = true;
     });
   }
+
+  getDownloadUrl(informationId: number): string {
+    return `http://localhost:8090/api/v1/file/download/${informationId}`;
+  }
+
+  openDetailsModal(info: Information): void {
+    const dialogRef = this.dialog.open(InformationDetailsComponent, {
+      width: '600px',
+      data: info
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('O modal foi fechado');
+    });
+  }
+  
 }
