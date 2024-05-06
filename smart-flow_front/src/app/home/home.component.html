@@ -45,8 +45,8 @@
       <table class="results-table">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Upload</th>
+            <th (click)="sort('name')">Nome <span *ngIf="sortColumn === 'name' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'name' && sortDirection === 'desc'">&#9660;</span></th>
+            <th (click)="sort('uploadDate')">Upload <span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'desc'">&#9660;</span></th>            
             <th>Arquivo</th>
             <th>Link</th>
             <th>Detalhes</th>
@@ -65,8 +65,8 @@
               </ng-container>
             </td>
             <td><a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">{{ info.link }}</a></td>
-            <td>
-              <button class="btn btn-primary" (click)="openDetailsModal(info)">Detalhes</button>
+            <td class="details-cell">
+              <button class="btn btn-details" (click)="openDetailsModal(info)">Detalhes</button>
             </td>            
           </tr>
         </tbody>

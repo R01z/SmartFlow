@@ -1,6 +1,6 @@
 .btn-primary {
     width: 10%;
-    margin-top: 20px; /* Adiciona espaçamento superior para separar o botão do campo de senha */
+    margin-top: 20px;
     background-color: #F98903;
     border-color: #F98903;
     border-radius: 8px;
@@ -52,4 +52,16 @@
 
   .fields-group{
     margin-bottom: 30px;
+  }
+
+  .details-cell {
+    text-align: center;
+}
+
+  .btn-details {
+    width: 50%;
+    background-color: #F98903;
+    border-color: #F98903;
+    border-radius: 8px;
+    color: #ffffff;
   }

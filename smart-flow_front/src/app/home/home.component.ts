@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   userTeams: Team[] = [];
   selectedTeams: number[] = [];
   tags: string = '';
+  sortColumn: string = ''; // Coluna atualmente selecionada para ordenação
+  sortDirection: string = 'asc'; // Direção da ordenação: 'asc' ou 'desc'
 
   constructor(private dialog: MatDialog, private userService: UserService, private informationService: InformationService) { }
 
@@ -83,6 +85,38 @@ export class HomeComponent implements OnInit {
       return 'http://' + link;
     }
     return link;
+  }
+
+  sort(column: keyof Information): void {
+    if (this.sortColumn === column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
+  
+    // Lógica de ordenação dos resultados com base na coluna e na direção da ordenação
+    this.informationResults.sort((a, b) => {
+      const valueA = a[column];
+      const valueB = b[column];
+  
+      // Verificar se as propriedades existem antes de compará-las
+      if (valueA !== undefined && valueB !== undefined) {
+        if (this.sortDirection === 'asc') {
+          return valueA > valueB ? 1 : -1;
+        } else {
+          return valueA < valueB ? 1 : -1;
+        }
+      } else {
+        if (valueA === undefined && valueB !== undefined) {
+          return -1;
+        } else if (valueA !== undefined && valueB === undefined) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+    });
   }
   
 }
