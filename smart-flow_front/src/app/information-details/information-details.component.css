@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F98903;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Ajuste para alinhar o texto à esquerda */
+    width: 100%;
+    max-width: 800px;
+    overflow-y: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  h2 {
+    font-family: 'Lato', sans-serif;
+    color: #F98903;
+    margin-bottom: 20px; /* Reduzi a margem inferior para um espaçamento mais compacto */
+  }
+  
+  p {
+    margin-bottom: 10px; /* Reduzi a margem inferior para um espaçamento mais compacto */
+  }
+  
+  a {
+    color: #F98903; /* Alterei a cor do link */
+  }
+  
+  button {
+    margin-top: 20px;
+    background-color: #F98903;
+    border-color: #F98903;
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 10px 20px; /* Aumentei o padding para um botão mais largo */
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #e63e00;
+    border-color: #e63e00;
+  }
+  
+  .btn-close {
+    margin-left: auto; /* Alinha o botão à direita */
+  }
+  

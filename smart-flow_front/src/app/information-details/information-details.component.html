@@ -1,12 +1,17 @@
-<h2>{{ data.name }} - Detalhes</h2>
-<p><strong>Nome: </strong> {{ data.name }}</p>
-<p><strong>Descrição: </strong> {{ data.description }}</p>
-<p><strong>Data de Upload: </strong> {{ data.uploadDate | date:'dd/MM/yyyy' }}</p>
-<ng-container *ngIf="data.file">
-    <p><strong>Arquivo: </strong> <a [href]="getDownloadUrl(data.informationId)" target="_blank" rel="noopener noreferrer">Download</a></p>
-</ng-container>
-<ng-container *ngIf="data.link">
-    <p><strong>Link: </strong> <a *ngIf="data.link" [href]="formatLink(data.link)" target="_blank">{{ data.link }}</a></p>
-</ng-container>
-<p><strong>Tags: </strong> {{ data.tags.join(', ') }}</p>
-<button mat-button mat-dialog-close>Fechar</button>
+<div class="container">
+    <div class="card">
+      <h2>{{ data.name }} - Detalhes</h2>
+      <p><strong>Nome: </strong> {{ data.name }}</p>
+      <p><strong>Descrição: </strong> {{ data.description }}</p>
+      <p><strong>Data de Upload: </strong> {{ data.uploadDate | date:'dd/MM/yyyy' }}</p>
+      <ng-container *ngIf="data.file">
+        <p><strong>Arquivo: </strong> <a [href]="getDownloadUrl(data.informationId)" target="_blank" rel="noopener noreferrer">Download</a></p>
+      </ng-container>
+      <ng-container *ngIf="data.link">
+        <p><strong>Link: </strong> <a *ngIf="data.link" [href]="formatLink(data.link)" target="_blank">{{ data.link }}</a></p>
+      </ng-container>
+      <p><strong>Tags: </strong> {{ data.tags.join(', ') }}</p>
+      <button class="btn btn-close" mat-button mat-dialog-close></button>
+    </div>
+  </div>
+  
