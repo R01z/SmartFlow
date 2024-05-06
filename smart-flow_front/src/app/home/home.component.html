@@ -64,7 +64,7 @@
                 -
               </ng-container>
             </td>
-            <td><a href="{{ info.link }}" target="_blank">{{ info.link }}</a></td>
+            <td><a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">{{ info.link }}</a></td>
             <td>
               <button class="btn btn-primary" (click)="openDetailsModal(info)">Detalhes</button>
             </td>            

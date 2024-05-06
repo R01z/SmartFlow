@@ -77,5 +77,12 @@ export class HomeComponent implements OnInit {
       console.log('O modal foi fechado');
     });
   }
+
+  formatLink(link: string): string {
+    if (!/^https?:\/\//i.test(link)) {
+      return 'http://' + link;
+    }
+    return link;
+  }
   
 }
