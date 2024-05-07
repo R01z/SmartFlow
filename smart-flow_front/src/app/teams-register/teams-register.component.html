@@ -1,5 +1,6 @@
 <div class="container">
     <div class="card">
+      <button class="btn btn-close" mat-button mat-dialog-close></button>
       <h1>{{ title }}</h1>
       <form (ngSubmit)="submitForm()">
         <div class="form-group">
@@ -17,7 +18,6 @@
         <button *ngIf="isEditMode" type="button" class="btn-delete" (click)="deleteTeam()">Deletar Time</button>
         <button type="submit" class="btn-primary">Salvar</button>
       </form>
-      <button mat-button mat-dialog-close>Fechar</button>
     </div>
   </div>
   

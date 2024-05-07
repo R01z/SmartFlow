@@ -90,3 +90,6 @@ body {
     border-color: #df1717;
   }
   
+  .btn-close {
+    margin-left: auto; /* Alinha o botão à direita */
+  }
