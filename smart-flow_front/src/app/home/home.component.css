@@ -1,3 +1,21 @@
+.welcome-message {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #333; /* Cor do texto */
+  border-radius: 8px; /* Borda arredondada */
+  display: inline-block; /* Para que o bloco se ajuste ao conteúdo */
+  margin-bottom: 15px;
+}
+
+.welcome-text {
+  font-weight: bold; /* Texto em negrito */
+}
+
+.username {
+  color: #F98903; /* Cor do nome de usuário */
+  font-weight: bold;
+}
+
 .btn-primary {
     width: 10%;
     margin-top: 20px;
@@ -14,7 +32,8 @@
 
   /* Estilo para a página principal */
 .home-container {
-    margin: 40px; /* Margem geral em torno de todos os elementos */
+    margin-left: 40px; /* Margem geral em torno de todos os elementos */
+    margin-top: 30px;
   }
   
   /* Estilo para os filtros de pesquisa */
@@ -46,7 +65,7 @@
   }
   
   .filter-field{
-    margin-right: 30px;
+    margin-right: 3px;
     margin-left: 5px;
   }
 
@@ -65,3 +84,65 @@
     border-radius: 8px;
     color: #ffffff;
   }
+
+/* CSS personalizado para o campo mat-select */
+.mat-select-filter-field {
+  border: 2px solid #c2bebe; /* Adiciona uma borda ao redor do campo */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  width: 20%; /* Define a largura do campo */
+}
+
+/* Ajusta o posicionamento da seta de expansão */
+.mat-select-arrow {
+  right: 8px; /* Ajusta a posição da seta para a direita */
+  top: 50%; /* Centraliza verticalmente a seta */
+  transform: translateY(-50%); /* Move a seta para o centro verticalmente */
+  margin-right: 15px;
+}
+
+/* Altera a cor das caixas de seleção marcadas para laranja */
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: #F98903 !important; /* Define a cor de fundo como laranja */
+  border-color: #F98903 !important; /* Define a cor da borda como laranja */
+}
+
+/* Altera a cor das caixas de seleção marcadas para laranja */
+.custom-select.mat-pseudo-checkbox-checked .mat-pseudo-checkbox-background {
+  background-color: #F98903 !important; /* Define a cor de fundo como laranja */
+  border-color: #F98903 !important; /* Define a cor da borda como laranja */
+}
+
+/* Altera a cor das caixas de seleção marcadas para laranja */
+.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full.mat-mdc-option-pseudo-checkbox {
+  background-color: #F98903 !important; /* Define a cor de fundo como laranja */
+}
+
+
+.info-icon {
+  position: relative;
+  top: 3px;
+  margin-left: 5px;
+  font-size: 18px;
+  cursor: help; /* Muda o cursor para uma mãozinha */
+}
+
+.info-icon:hover::after {
+  content: attr(title); /* Exibe o texto informativo */
+  top: -30px; /* Posiciona o texto acima do ícone */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: white; /* Cor de fundo */
+  color: #F98903; /* Cor do texto */
+  border-radius: 8px;
+  border-color: #333;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.label{
+  margin-left: 20px;
+}
+
+
+

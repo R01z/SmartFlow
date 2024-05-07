@@ -1,37 +1,48 @@
 <div class="home-container">
-  <div>
-      Bem-vindo, {{ userName }}
+  <div class="welcome-message">
+    <span class="welcome-text">Bem-vindo(a), </span>
+    <span class="username">{{ userName }}</span>
   </div>
+
     
   <div class="filter-container">
     <!-- Filtros de Pesquisa -->
-    <h2>Filtros de Pesquisa</h2>
+    <h2>
+      Pesquisar Informações
+      <span class="info-icon" title="Para filtrar as informações buscadas, preencha os campos abaixo e clique em buscar">&#9432;</span>
+    </h2>
     
     <div class="fields-group">
-      <label for="nameInput">Nome:</label>
+      <label class="label" for="nameInput">Nome:</label>
       <input class="filter-field" id="nameInput" type="text" [(ngModel)]="searchFilters.name">
+      <span class="info-icon" title="Nome da informação buscada, serão pesquisadas aquelas que contenham as palavras inseridas">&#9432;</span>
 
-      <label for="startDateInput">Data de Início:</label>
+      <label class="label" for="startDateInput">Data de Início:</label>
       <input class="filter-field" id="startDateInput" type="date" [(ngModel)]="searchFilters.startDate">
+      <span class="info-icon" title="A partir de qual data que a informação tenha sido inserida">&#9432;</span>
 
-      <label for="endDateInput">Data de Fim:</label>
+      <label class="label" for="endDateInput">Data de Fim:</label>
       <input class="filter-field" id="endDateInput" type="date" [(ngModel)]="searchFilters.endDate">
+      <span class="info-icon" title="Até qual data que a informação tenha sido inserida">&#9432;</span>
     </div>
 
     <div class="fields-group">
-      <label for="descriptionInput">Descrição:</label>
+      <label class="label" for="descriptionInput">Descrição:</label>
       <input class="filter-field" id="descriptionInput" type="text" [(ngModel)]="searchFilters.description">
+      <span class="info-icon" title="Palavras que possam estar presentes na descriçaõ da informação">&#9432;</span>
     
-      <label for="tagsInput">Tags:</label>
+      <label class="label" for="tagsInput">Tags:</label>
       <input class="filter-field" id="tagsInput" type="text" [(ngModel)]="tags" placeholder="Insira as tags separadas por vírgula">
+      <span class="info-icon" title="Possíveis tags que as informações possam conter. Insira quantas tags quiser separando-as com vírgula">&#9432;</span>
     </div>
 
     <div class="fields-group">
-      <label for="teamSelect">Times:</label>
-      <select class="filter-field" id="teamSelect" multiple [(ngModel)]="selectedTeams">
-        <option *ngFor="let team of userTeams" [ngValue]="team.teamId">{{ team.name }}</option>
-      </select>
-    </div>
+      <label class="label" for="teamSelect">Times:</label>
+      <mat-select class="filter-field mat-select-filter-field" id="teamSelect" [(ngModel)]="selectedTeams" multiple>
+        <mat-option *ngFor="let team of userTeams" [value]="team.teamId">{{ team.name }}</mat-option>
+      </mat-select>
+      <span class="info-icon" title="Times específicos onde queira procurar as informações. É possível marcar mais de um">&#9432;</span>
+    </div>    
 
     <!-- Botão de Pesquisa -->
     <button class="btn btn-primary" (click)="search()">Buscar</button>

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,7 @@ import { DropdownService } from './dropdown.service';
 import { TeamsService } from './teams.service';
 import { AddInformationComponent } from './add-information/add-information.component';
 import { InformationDetailsComponent } from './information-details/information-details.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -43,13 +47,15 @@ import { InformationDetailsComponent } from './information-details/information-d
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatSelectModule,
+    MatOptionModule,
     MatDialogModule
   ],
   exports: [
     UserRegisterComponent,
     AddInformationComponent
   ],
-  providers: [UserService, DropdownService, TeamsService],
+  providers: [UserService, DropdownService, TeamsService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
