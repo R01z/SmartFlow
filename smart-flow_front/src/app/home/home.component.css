@@ -44,6 +44,8 @@
   /* Estilo para os resultados da pesquisa */
   .results-container {
     margin-top: 20px; /* Margem superior para separar os resultados dos filtros */
+    margin-right: 40px;
+    margin-bottom: 20px;
   }
   
   /* Estilo para a tabela de resultados */
