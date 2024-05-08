@@ -86,3 +86,12 @@
     border-width: 2px; /* Espessura padrão da borda */
     border-style: solid; /* Estilo da borda */
   }
+
+  /* Altera a cor da aba selecionada para laranja */
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #F98903 !important;
+}
+
+.mdc-tab-indicator__content, .mdc-tab-indicator__content--underline{
+  border-color: #F98903 !important;
+}

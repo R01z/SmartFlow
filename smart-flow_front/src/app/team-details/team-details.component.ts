@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Team } from '../models/team.model';
 import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../teams.service';
@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-team-details',
   templateUrl: './team-details.component.html',
-  styleUrl: './team-details.component.css'
+  styleUrl: './team-details.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class TeamDetailsComponent implements OnInit {
   team: Team;
