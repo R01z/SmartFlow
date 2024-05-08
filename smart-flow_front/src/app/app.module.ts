@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,6 +50,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HttpClientModule,
     MatSelectModule,
     MatOptionModule,
+    MatTabsModule,
     MatDialogModule
   ],
   exports: [

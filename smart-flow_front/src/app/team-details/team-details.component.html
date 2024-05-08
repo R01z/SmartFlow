@@ -5,46 +5,52 @@
       <p class="team-description">{{ team.description }}</p>
     </div>
   </div>
-  
 
-  <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
+  <mat-tab-group>
+    <mat-tab label="Informações">
+      <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
 
-  <div class="information-table-container">
-    <table class="information-table">
-      <caption>Informações do Time</caption>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Descrição</th>
-          <th>Data de Upload</th>
-          <th>Arquivo</th>
-          <th>Link</th>
-          <th>Tags</th>
-          <th>Remover</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let info of teamInformations">
-          <td>{{ info.informationId }}</td>
-          <td>{{ info.name }}</td>
-          <td>{{ info.description }}</td>
-          <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
-          <td>
-            <ng-container *ngIf="info.file">
-              <a [href]="getDownloadUrl(info.informationId)">Download</a>
-            </ng-container>
-            <ng-container *ngIf="!info.file">
-              -
-            </ng-container>
-          </td>
-          <td>
-            <a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">Abrir</a>
-          </td>
-          <td>{{ info.tags.join(', ') }}</td>
-          <td><button (click)="deleteInfo(info.informationId)">Deletar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <div class="information-table-container">
+        <table class="information-table">
+          <caption>Informações do Time</caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Data de Upload</th>
+              <th>Arquivo</th>
+              <th>Link</th>
+              <th>Tags</th>
+              <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let info of teamInformations">
+              <td>{{ info.informationId }}</td>
+              <td>{{ info.name }}</td>
+              <td>{{ info.description }}</td>
+              <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
+              <td>
+                <ng-container *ngIf="info.file">
+                  <a [href]="getDownloadUrl(info.informationId)">Download</a>
+                </ng-container>
+                <ng-container *ngIf="!info.file">
+                  -
+                </ng-container>
+              </td>
+              <td>
+                <a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">Abrir</a>
+              </td>
+              <td>{{ info.tags.join(', ') }}</td>
+              <td><button (click)="deleteInfo(info.informationId)">Deletar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab> 
+    <mat-tab label="Wiki">
+
+    </mat-tab>
+  </mat-tab-group>
 </div>
