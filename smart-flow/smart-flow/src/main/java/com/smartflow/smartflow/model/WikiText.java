@@ -1,5 +1,7 @@
 package com.smartflow.smartflow.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,5 +29,6 @@ public class WikiText {
 
     @ManyToOne
     @JoinColumn(name = "teamId")
+    @JsonIgnore
     private Teams team;
 }
