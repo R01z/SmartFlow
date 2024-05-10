@@ -25,10 +25,6 @@ public class WikiTextController {
 
     @PostMapping("/saveOrUpdate")
     public ResponseEntity<String> saveOrUpdateWikiText(@RequestBody WikiTextRequest request) {
-        if (request.getText() == null || request.getText().isEmpty()) {
-            System.out.println("!!!!!!!!!!! TEXTO NULL OU VAZIO !!!!!!!!!!!!");
-            System.out.println(request.getText());
-        }
         wikiTextService.saveOrUpdateWikiText(request.getTeamId(), request.getText());
         return ResponseEntity.status(HttpStatus.CREATED).body("Wiki text saved or updated successfully.");
     }
