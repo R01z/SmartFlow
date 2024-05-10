@@ -95,3 +95,7 @@
 .mdc-tab-indicator__content, .mdc-tab-indicator__content--underline{
   border-color: #F98903 !important;
 }
+
+.editor-container {
+  height: 100%; /* Defina a altura desejada aqui */
+}

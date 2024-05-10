@@ -51,7 +51,7 @@
     </mat-tab> 
     <mat-tab label="Wiki">
       <button class="add-info-button" (click)="toggleReadOnly()">Entrar/Sair do modo leitura</button>
-      <ckeditor [editor]="Editor" [data]="initialMessage" [disabled]="isReadOnly" (change)="onChange($event)"></ckeditor>
+      <ckeditor class="editor-container" [editor]="Editor" [data]="initialMessage" [disabled]="isReadOnly" (change)="onChange($event)"></ckeditor>
       <button class="add-info-button" *ngIf="!isReadOnly" (click)="saveWikiText()">Salvar</button>
     </mat-tab>
   </mat-tab-group>
