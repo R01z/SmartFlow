@@ -39,6 +39,7 @@ export class TeamDetailsComponent implements OnInit {
           // Carregue os detalhes do time com o novo 'teamId'
           this.loadTeamDetails(teamId);
           this.loadTeamInformation(teamId);
+          this.loadTeamWikiText(teamId);
         } else {
           console.error('O parâmetro "teamId" não é um número válido.');
         }
@@ -70,6 +71,22 @@ export class TeamDetailsComponent implements OnInit {
         this.teamInformations = informations;
     });
 } 
+
+  loadTeamWikiText(teamId: number): void{
+    this.http.get<any>(`http://localhost:8090/api/v1/wiki/getByTeamId/${teamId}`)
+      .subscribe(
+        response => {
+          if (response && response.text) {
+            this.initialMessage = response.text;
+          } else {
+            console.error('Não foi possível encontrar o texto da Wiki para o time com ID:', teamId);
+          }
+        },
+        error => {
+          console.error('Erro ao carregar o texto da Wiki:', error);
+        }
+      );
+  }
 
   getDownloadUrl(informationId: number): string {
     return `http://localhost:8090/api/v1/file/download/${informationId}`;
