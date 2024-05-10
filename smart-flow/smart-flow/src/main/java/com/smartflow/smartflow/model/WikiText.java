@@ -24,7 +24,7 @@ public class WikiText {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer wikiId;
 
-    @Column(name = "text")
+    @Column(name = "text", length = 10000)
     private String text;
 
     @ManyToOne
