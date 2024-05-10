@@ -23,7 +23,7 @@ export class TeamDetailsComponent implements OnInit {
   public Editor = ClassicEditor;
   initialMessage: string  = '';
   editorData: string = '';
-  isEditing: boolean = false;
+  isReadOnly: boolean = true;
 
   constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog, private http: HttpClient) {
     this.team = {} as Team;
@@ -117,7 +117,7 @@ export class TeamDetailsComponent implements OnInit {
     const text = this.editorData; // supondo que você tenha a propriedade 'editorData' que contém o texto atual do editor
     const teamId = this.team.teamId; // supondo que você tenha a propriedade 'team' carregada
     this.saveOrUpdateWikiText(teamId, text);
-    this.isEditing = false; // após salvar, o usuário não está mais editando
+    this.isReadOnly = true; // após salvar, o usuário não está mais editando
   }
 
   private saveOrUpdateWikiText(teamId: number, text: string): void {
@@ -131,5 +131,9 @@ export class TeamDetailsComponent implements OnInit {
           console.error('Erro ao salvar o texto da Wiki:', error);
         }
       );
+  }
+
+  toggleReadOnly(): void {
+    this.isReadOnly = !this.isReadOnly;
   }
 }
