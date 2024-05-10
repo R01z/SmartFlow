@@ -38,7 +38,7 @@
 
     <div class="fields-group">
       <label class="label" for="teamSelect">Times:</label>
-      <mat-select class="filter-field mat-select-filter-field" id="teamSelect" [(ngModel)]="selectedTeams" multiple>
+      <mat-select class="mat-select-filter-field" id="teamSelect" [(ngModel)]="selectedTeams" multiple>
         <mat-option *ngFor="let team of userTeams" [value]="team.teamId">{{ team.name }}</mat-option>
       </mat-select>
       <span class="info-icon" title="Times específicos onde queira procurar as informações. É possível marcar mais de um">&#9432;</span>

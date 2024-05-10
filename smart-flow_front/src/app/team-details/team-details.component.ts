@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Information } from '../models/information.model';
 import { InformationFilter } from '../models/information-filter.model';
 import { HttpClient } from '@angular/common/http';
+import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-team-details',
@@ -18,6 +20,10 @@ export class TeamDetailsComponent implements OnInit {
   team: Team;
   teamInformations: Information[];
   dialogRef: any;
+  public Editor = ClassicEditor;
+  initialMessage: string  = '';
+  editorData: string = '';
+  isEditing: boolean = false;
 
   constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog, private http: HttpClient) {
     this.team = {} as Team;
@@ -85,5 +91,28 @@ export class TeamDetailsComponent implements OnInit {
       console.error('Erro ao deletar informação:', error);
     });
   }
+
+  public onChange({ editor }: ChangeEvent): void {
+    this.editorData = editor.getData();
+  }
   
+  public saveWikiText(): void {
+    const text = this.editorData; // supondo que você tenha a propriedade 'editorData' que contém o texto atual do editor
+    const teamId = this.team.teamId; // supondo que você tenha a propriedade 'team' carregada
+    this.saveOrUpdateWikiText(teamId, text);
+    this.isEditing = false; // após salvar, o usuário não está mais editando
+  }
+
+  private saveOrUpdateWikiText(teamId: number, text: string): void {
+    const request = { teamId, text };
+    this.http.post<any>('http://localhost:8090/api/v1/wiki/saveOrUpdate', request)
+      .subscribe(
+        response => {
+          console.log('Texto da Wiki salvo com sucesso:', response);
+        },
+        error => {
+          console.error('Erro ao salvar o texto da Wiki:', error);
+        }
+      );
+  }
 }

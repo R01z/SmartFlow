@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 import { UserService } from './user.service';
 import { MenuComponent } from './menu/menu.component';
 import { UserControlComponent } from './user-control/user-control.component';
@@ -51,7 +53,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatSelectModule,
     MatOptionModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    CKEditorModule
   ],
   exports: [
     UserRegisterComponent,

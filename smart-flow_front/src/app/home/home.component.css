@@ -92,7 +92,7 @@
 .mat-select-filter-field {
   border: 2px solid #c2bebe; /* Adiciona uma borda ao redor do campo */
   border-radius: 4px; /* Adiciona bordas arredondadas */
-  width: 20%; /* Define a largura do campo */
+  width: 20%;
 }
 
 /* Ajusta o posicionamento da seta de expansão */
@@ -102,24 +102,6 @@
   transform: translateY(-50%); /* Move a seta para o centro verticalmente */
   margin-right: 15px;
 }
-
-/* Altera a cor das caixas de seleção marcadas para laranja */
-.mat-checkbox-checked .mat-checkbox-background {
-  background-color: #F98903 !important; /* Define a cor de fundo como laranja */
-  border-color: #F98903 !important; /* Define a cor da borda como laranja */
-}
-
-/* Altera a cor das caixas de seleção marcadas para laranja */
-.custom-select.mat-pseudo-checkbox-checked .mat-pseudo-checkbox-background {
-  background-color: #F98903 !important; /* Define a cor de fundo como laranja */
-  border-color: #F98903 !important; /* Define a cor da borda como laranja */
-}
-
-/* Altera a cor das caixas de seleção marcadas para laranja */
-.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full.mat-mdc-option-pseudo-checkbox {
-  background-color: #F98903 !important; /* Define a cor de fundo como laranja */
-}
-
 
 .info-icon {
   position: relative;
@@ -147,5 +129,6 @@
   margin-left: 20px;
 }
 
-
-
+.mat-select{
+  width: 250px;
+}

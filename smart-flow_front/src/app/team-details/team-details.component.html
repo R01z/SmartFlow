@@ -50,7 +50,8 @@
       </div>
     </mat-tab> 
     <mat-tab label="Wiki">
-
+      <ckeditor [editor]="Editor" [data]="initialMessage" (change)="onChange($event)"></ckeditor>
+      <button (click)="saveWikiText()">Salvar</button>
     </mat-tab>
   </mat-tab-group>
 </div>
