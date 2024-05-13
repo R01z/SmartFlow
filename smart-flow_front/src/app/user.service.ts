@@ -20,4 +20,8 @@ export class UserService {
   getUserTeams(userId: number): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8090/api/v1/users/${userId}/teams`);
   }
+
+  isUserAdmin(userId: number): Observable<boolean> {
+    return this.http.get<boolean>(`http://localhost:8090/api/v1/users/${userId}/isAdmin`);
+  }
 }

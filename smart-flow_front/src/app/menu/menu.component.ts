@@ -11,6 +11,7 @@ import { DropdownService } from '../dropdown.service';
 export class MenuComponent implements OnInit {
   userTeams: Team[] = [];
   dropdownOpen: boolean = false;
+  isAdmin: boolean = false;
  
   constructor(private userService: UserService, private dropdownService: DropdownService) { }
 
@@ -19,6 +20,10 @@ export class MenuComponent implements OnInit {
       const userId = user.userId;
       this.userService.getUserTeams(userId).subscribe(teams => {
         this.userTeams = teams;
+      });
+
+      this.userService.isUserAdmin(userId).subscribe(isAdmin => {
+        this.isAdmin = isAdmin;
       });
     });
 
