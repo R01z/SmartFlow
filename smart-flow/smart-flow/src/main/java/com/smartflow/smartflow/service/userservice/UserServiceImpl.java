@@ -118,4 +118,17 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public boolean isUserAdmin(Integer userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        if (user != null) {
+            for (Roles role : user.getRoles()) {
+                if (role.getName().equals("Administrador")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

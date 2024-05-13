@@ -91,4 +91,11 @@ public class UserController {
             return new ArrayList<>();
         }
     }
+
+    @GetMapping("/{userId}/isAdmin")
+    public ResponseEntity<Boolean> isUserAdmin(@PathVariable Integer userId) {
+        boolean isAdmin = userService.isUserAdmin(userId);
+        return ResponseEntity.ok(isAdmin);
+    }
+
 }

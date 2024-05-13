@@ -20,4 +20,6 @@ public interface UserService {
     User getUserById(Integer userId);
 
     boolean deleteUserById(Integer userId);
+
+    boolean isUserAdmin(Integer userId);
 }
