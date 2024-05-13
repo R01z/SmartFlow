@@ -40,7 +40,7 @@ public class MuralServiceImpl implements MuralService {
 
     @Override
     public List<Mural> getMuralsByTeamId(Integer teamId) {
-        return muralRepository.findByTeamTeamId(teamId);
+        return muralRepository.findByTeamTeamIdOrderByPublicationDateDesc(teamId);
     }
 
 }

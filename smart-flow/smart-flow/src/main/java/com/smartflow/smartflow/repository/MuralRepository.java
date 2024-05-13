@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import com.smartflow.smartflow.model.Mural;
-import com.smartflow.smartflow.model.Teams;
 
 @EnableJpaRepositories
 @Repository
 public interface MuralRepository extends JpaRepository<Mural, Integer> {
     List<Mural> findByTeamTeamId(Integer teamId);
+
+    List<Mural> findByTeamTeamIdOrderByPublicationDateDesc(Integer teamId);
 }
