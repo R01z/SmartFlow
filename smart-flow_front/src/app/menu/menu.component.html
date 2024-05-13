@@ -10,7 +10,7 @@
       <li><a [routerLink]="['/user-control']">Gerir Usuários</a></li>
       <li><a [routerLink]="['/teams']">Gerir Times</a></li>
       <li class="dropdown">
-        <button class="dropbtn" (click)="toggleDropdown()">Meus Times</button>
+        <button class="dropbtn" (click)="toggleDropdown()">Meus Times \/</button>
         <div class="dropdown-content" [class.show]="dropdownOpen">
           <a *ngFor="let team of userTeams" [routerLink]="['/teams', team.teamId]">{{ team.name }}</a>
         </div>

@@ -7,6 +7,9 @@
   </div>
 
   <mat-tab-group>
+    <mat-tab label="Mural">
+      
+    </mat-tab>
     <mat-tab label="Informações">
       <button class="add-info-button" (click)="openAddInformationModal()">+ Adicionar Informação</button>
 
@@ -50,7 +53,7 @@
       </div>
     </mat-tab> 
     <mat-tab label="Wiki">
-      <button class="add-info-button" (click)="toggleReadOnly()">Entrar/Sair do modo leitura</button>
+      <button class="add-info-button" *ngIf="isReadOnly" (click)="toggleReadOnly()">Editar Texto</button>
       <ckeditor class="editor-container" [editor]="Editor" [data]="initialMessage" [disabled]="isReadOnly" (change)="onChange($event)"></ckeditor>
       <button class="add-info-button" *ngIf="!isReadOnly" (click)="saveWikiText()">Salvar</button>
     </mat-tab>
