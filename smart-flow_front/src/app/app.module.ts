@@ -28,6 +28,7 @@ import { TeamsService } from './teams.service';
 import { AddInformationComponent } from './add-information/add-information.component';
 import { InformationDetailsComponent } from './information-details/information-details.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AddMuralMessageComponent } from './add-mural-message/add-mural-message.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AddTeamMembersComponent,
     TeamDetailsComponent,
     AddInformationComponent,
-    InformationDetailsComponent
+    InformationDetailsComponent,
+    AddMuralMessageComponent
   ],
   imports: [
     BrowserModule,

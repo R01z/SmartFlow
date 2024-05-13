@@ -9,6 +9,7 @@ import { InformationFilter } from '../models/information-filter.model';
 import { HttpClient } from '@angular/common/http';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { AddMuralMessageComponent } from '../add-mural-message/add-mural-message.component';
 
 @Component({
   selector: 'app-team-details',
@@ -135,5 +136,15 @@ export class TeamDetailsComponent implements OnInit {
 
   toggleReadOnly(): void {
     this.isReadOnly = !this.isReadOnly;
+  }
+
+  openAddMuralModal(): void {
+    const dialogRef = this.dialog.open(AddMuralMessageComponent, {
+      width: '600px', // Defina a largura da janela modal conforme necessário
+      data: { teamId: this.team.teamId } // Passe o ID do time para o modal
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
   }
 }
