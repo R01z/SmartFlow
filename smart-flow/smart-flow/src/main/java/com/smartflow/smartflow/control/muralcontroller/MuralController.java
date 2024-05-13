@@ -24,7 +24,7 @@ public class MuralController {
     private MuralService muralService;
 
     @PostMapping(path = "/save")
-    public String saveInfo(@ModelAttribute MuralRequest muralRequest) {
+    public String save(@ModelAttribute MuralRequest muralRequest) {
         muralService.save(muralRequest);
         return "Aviso salvo com sucesso";
     }
