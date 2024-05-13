@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Team } from './models/team.model';
 import { Information } from './models/information.model';
 import { InformationFilter } from './models/information-filter.model';
+import { Mural } from './models/mural.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class TeamsService {
     if (filter.tags) params = params.set('tags', filter.tags.join(','));
 
     return this.http.get<Information[]>('http://localhost:8090/api/v1/information/getInformations', { params: params });
+  }
+
+  getMuralsByTeamId(teamId: number): Observable<Mural[]> {
+    return this.http.get<Mural[]>(`http://localhost:8090/api/v1/mural/team/${teamId}`);
   }
 }

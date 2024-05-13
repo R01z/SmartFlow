@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { AddMuralMessageComponent } from '../add-mural-message/add-mural-message.component';
+import { Mural } from '../models/mural.model';
 
 @Component({
   selector: 'app-team-details',
@@ -25,10 +26,12 @@ export class TeamDetailsComponent implements OnInit {
   initialMessage: string  = '';
   editorData: string = '';
   isReadOnly: boolean = true;
+  murals: Mural[];
 
   constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog, private http: HttpClient) {
     this.team = {} as Team;
     this.teamInformations = [];
+    this.murals = [];
    }
 
   ngOnInit(): void {
@@ -70,6 +73,10 @@ export class TeamDetailsComponent implements OnInit {
     };
     this.teamsService.getTeamInformation(filter).subscribe(informations => {
         this.teamInformations = informations;
+    });
+
+    this.teamsService.getMuralsByTeamId(teamId).subscribe(murals => {
+      this.murals = murals;
     });
 } 
 

@@ -9,7 +9,16 @@
   <mat-tab-group>
     <mat-tab label="Mural">
       <button class="add-info-button" (click)="openAddMuralModal()">+ Adicionar Mensagem</button>
-
+      <div *ngIf="murals && murals.length > 0">
+        <div *ngFor="let mural of murals" class="mural-item">
+          <h3>{{ mural.title }} <span class="publication-date">({{ mural.publicationDate | date:'dd/MM/yyyy' }})</span></h3>
+          <p>{{ mural.text }}</p>
+          <hr>
+        </div>
+      </div>
+      <div *ngIf="!murals || murals.length === 0">
+        <p>Nenhuma mensagem encontrada.</p>
+      </div>
       
     </mat-tab>
     <mat-tab label="Informações">
