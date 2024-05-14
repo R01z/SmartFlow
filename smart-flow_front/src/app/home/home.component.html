@@ -64,6 +64,7 @@
           <tr>
             <th (click)="sort('name')">Nome <span *ngIf="sortColumn === 'name' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'name' && sortDirection === 'desc'">&#9660;</span></th>
             <th (click)="sort('uploadDate')">Upload <span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'desc'">&#9660;</span></th>            
+            <th>Tipo</th>
             <th>Arquivo</th>
             <th>Link</th>
             <th>Detalhes</th>
@@ -73,6 +74,7 @@
           <tr *ngFor="let info of informationResults">
             <td>{{ info.name }}</td>
             <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
+            <td>{{ info.type }}</td>
             <td>
               <ng-container *ngIf="info.file">
                 <a [href]="getDownloadUrl(info.informationId)">Download</a>
