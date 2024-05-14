@@ -37,4 +37,8 @@ public class InformationSpecifications {
         return (root, query, builder) -> root.get("team").get("teamId").in(teamIds);
     }
 
+    public static Specification<Information> typeIdIn(List<Integer> typeId) {
+        return (root, query, builder) -> root.get("type").get("typeInformationId").in(typeId);
+    }
+
 }

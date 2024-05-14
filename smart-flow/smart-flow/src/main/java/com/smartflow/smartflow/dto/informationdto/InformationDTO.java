@@ -27,4 +27,6 @@ public class InformationDTO {
     private Integer teamId;
 
     private List<String> tags;
+
+    private Integer typeId;
 }
