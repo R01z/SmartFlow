@@ -30,6 +30,10 @@ public class InformationResponse {
         this.link = information.getLink();
         this.teamId = information.getTeam().getTeamId();
         this.tags = information.getTags();
-        this.type = information.getTypeInformation().getName();
+        if (information.getTypeInformation() == null) {
+            this.type = "Sem tipo definido";
+        } else {
+            this.type = information.getTypeInformation().getName();
+        }
     }
 }

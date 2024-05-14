@@ -16,14 +16,26 @@ export class AddInformationComponent {
     link: '',
     file: null as File | null,
     tags: [] as string[],
-    teamId: null as number | null
+    teamId: null as number | null,
+    typeId: null as number | null
   };
   tags: string = '';
   title: string = 'Adicionar Nova Informação'; // Título padrão
+  types: any[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private route: ActivatedRoute, 
   public dialogRef: MatDialogRef<AddInformationComponent>) {
     this.teamId = data.teamId;
+  }
+
+  ngOnInit(): void {
+    this.loadTypes();
+  }
+
+  loadTypes(): void {
+    this.http.get<any[]>('http://localhost:8090/api/v1/typeinformation/getAllTypes').subscribe(data => {
+      this.types = data;
+    });
   }
 
   submitForm(): void {
@@ -35,6 +47,7 @@ export class AddInformationComponent {
     const formData = new FormData();
     formData.append('name', this.informationData.name);
     formData.append('description', this.informationData.description);
+    formData.append('typeId', this.informationData.typeId?.toString() || '');
     formData.append('link', this.informationData.link);
     formData.append('teamId', this.teamId.toString());
     if (this.informationData.file) {
