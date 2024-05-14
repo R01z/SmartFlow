@@ -20,8 +20,11 @@ export class TeamsComponent implements OnInit{
   }
 
   openTeamRegisterModal(): void {
-    this.dialog.open(TeamsRegisterComponent, {
+    const dialogRef = this.dialog.open(TeamsRegisterComponent, {
       width: '600px' // Defina a largura da janela modal conforme necessário
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
     });
   }
 
@@ -37,9 +40,12 @@ export class TeamsComponent implements OnInit{
   }
 
   editTeam(teamId: string): void {
-    this.dialog.open(TeamsRegisterComponent, {
+    const dialogRef = this.dialog.open(TeamsRegisterComponent, {
       width: '600px',
       data: { teamId }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
     });
   }
 

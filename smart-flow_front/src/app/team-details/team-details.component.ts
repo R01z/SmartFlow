@@ -64,6 +64,9 @@ export class TeamDetailsComponent implements OnInit {
       width: '600px', // Defina a largura da janela modal conforme necessário
       data: { teamId: this.team.teamId } // Passe o ID do time para o modal
     });
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
 
   }
 

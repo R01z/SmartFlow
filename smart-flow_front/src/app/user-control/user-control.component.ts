@@ -19,8 +19,11 @@ export class UserControlComponent implements OnInit {
   }
 
   openUserRegisterModal(): void {
-    this.dialog.open(UserRegisterComponent, {
+    const dialogRef = this.dialog.open(UserRegisterComponent, {
       width: '600px' // Defina a largura da janela modal conforme necessário
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
     });
   }
 

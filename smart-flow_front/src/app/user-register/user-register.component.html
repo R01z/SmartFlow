@@ -17,9 +17,9 @@
             </div>
             <div class="form-group">
                 <label for="roles">Papéis:</label>
-                <select id="roles" name="roles" multiple [(ngModel)]="userData.roles" required class="form-control">
-                    <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
-                </select>
+                <mat-select id="roles" name="roles" [(ngModel)]="userData.roles" required class="form-control" multiple>
+                  <mat-option *ngFor="let role of roles" [value]="role">{{role.name}}</mat-option>
+                </mat-select>
             </div>
             <button *ngIf="isEditMode" type="button" class="btn-delete" (click)="deleteUser()">Deletar Usuário</button>
             <button type="submit" class="btn-primary">{{ submitButtonLabel }}</button>
