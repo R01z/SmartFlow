@@ -30,7 +30,13 @@
       <label class="label" for="descriptionInput">Descrição:</label>
       <input class="filter-field" id="descriptionInput" type="text" [(ngModel)]="searchFilters.description">
       <span class="info-icon" title="Palavras que possam estar presentes na descriçaõ da informação">&#9432;</span>
-    
+      
+      <label class="label" for="typeSelect">Tipo de Informação:</label>
+      <mat-select class="mat-select-filter-field" id="typeSelect" [(ngModel)]="selectedTypes" multiple>
+        <mat-option *ngFor="let type of availableTypes" [value]="type.typeInformationId">{{ type.name }}</mat-option>
+      </mat-select>
+      <span class="info-icon" title="Tipos específicos de informação que deseja pesquisar. É possível selecionar mais de um.">&#9432;</span>
+
       <label class="label" for="tagsInput">Tags:</label>
       <input class="filter-field" id="tagsInput" type="text" [(ngModel)]="tags" placeholder="Insira as tags separadas por vírgula">
       <span class="info-icon" title="Possíveis tags que as informações possam conter. Insira quantas tags quiser separando-as com vírgula">&#9432;</span>

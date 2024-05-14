@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InformationFilter } from './models/information-filter.model';
 import { Information } from './models/information.model';
+import { TypeInformation } from './models/type-information.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,16 @@ export class InformationService {
     if (filters.tags && filters.tags.length > 0) {
       params = params.set('tags', filters.tags.join(','));
     }
+    if (filters.typeId && filters.typeId.length > 0) {
+      params = params.set('typeId', filters.typeId.join(','));
+    }
 
     // Fazer a solicitação GET com os parâmetros de consulta
     return this.http.get<Information[]>('http://localhost:8090/api/v1/information/getInformations', { params: params });
+  }
+
+  getAllTypes(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:8090/api/v1/typeinformation/getAllTypes');
   }
 
 }

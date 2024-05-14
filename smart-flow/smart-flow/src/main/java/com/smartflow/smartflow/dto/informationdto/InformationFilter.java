@@ -1,6 +1,5 @@
 package com.smartflow.smartflow.dto.informationdto;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import lombok.Getter;

@@ -6,6 +6,7 @@ import { Information } from '../models/information.model';
 import { InformationService } from '../information.service';
 import { Team } from '../models/team.model';
 import { InformationDetailsComponent } from '../information-details/information-details.component';
+import { TypeInformation } from '../models/type-information.model';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit {
   tags: string = '';
   sortColumn: string = ''; // Coluna atualmente selecionada para ordenação
   sortDirection: string = 'asc'; // Direção da ordenação: 'asc' ou 'desc'
+  availableTypes: TypeInformation[] = [];
+  selectedTypes: number[] = [];
 
   constructor(private dialog: MatDialog, private userService: UserService, private informationService: InformationService) { }
 
@@ -30,6 +33,7 @@ export class HomeComponent implements OnInit {
     this.userService.getLoggedUser().subscribe((user: any) => {
       this.userName = user.name;
       this.loadUserTeams(user.userId);
+      this.loadAvailableTypes();
     });
   }
 
@@ -37,6 +41,14 @@ export class HomeComponent implements OnInit {
     this.userService.getUserTeams(userId).subscribe((teams: Team[]) => {
       this.userTeams = teams;
     });
+  }
+
+  loadAvailableTypes(): void {
+    this.informationService.getAllTypes().subscribe((types: TypeInformation[]) => {
+      this.availableTypes = types;
+      console.log("Tipos : ", types);
+    });
+    
   }
 
   processTags(): void {
@@ -50,6 +62,9 @@ export class HomeComponent implements OnInit {
   search(): void {
     this.processTags();
     this.searchFilters.teamId = this.selectedTeams.length > 0 ? this.selectedTeams : undefined;
+
+    this.searchFilters.typeId = this.selectedTypes.length > 0 ? this.selectedTypes : undefined;
+    console.log("Tipos de informações selecionados: ", this.selectedTypes);
 
     if (this.searchFilters.startDate) {
       this.searchFilters.startDate = new Date(this.searchFilters.startDate);
