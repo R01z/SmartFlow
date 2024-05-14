@@ -19,7 +19,6 @@ public class InformationResponse {
     private String link;
     private Integer teamId;
     private List<String> tags;
-    private String type;
 
     public InformationResponse(Information information) {
         this.informationId = information.getInformationId();
@@ -30,6 +29,5 @@ public class InformationResponse {
         this.link = information.getLink();
         this.teamId = information.getTeam().getTeamId();
         this.tags = information.getTags();
-        this.type = information.getType().getName();
     }
 }

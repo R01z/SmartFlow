@@ -12,10 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.smartflow.smartflow.dto.informationdto.InformationDTO;
 import com.smartflow.smartflow.model.Information;
 import com.smartflow.smartflow.model.Teams;
-import com.smartflow.smartflow.model.TypeInformation;
 import com.smartflow.smartflow.repository.InformationRepository;
 import com.smartflow.smartflow.repository.TeamsRepository;
-import com.smartflow.smartflow.repository.TypeInformationRepository;
 
 @Service
 public class InformationServiceImpl implements InformationService {
@@ -25,9 +23,6 @@ public class InformationServiceImpl implements InformationService {
 
     @Autowired
     TeamsRepository teamsRepository;
-
-    @Autowired
-    TypeInformationRepository typeInformationRepository;
 
     private static final String BASE_DIRECTORY = "D:\\SmartFlowFiles\\";
 
@@ -83,9 +78,6 @@ public class InformationServiceImpl implements InformationService {
                 // Trate o erro conforme necessário
             }
         }
-
-        TypeInformation type = typeInformationRepository.getReferenceById(informationDTO.getTypeId());
-        information.setType(type);
 
         informationRepository.save(information);
 
