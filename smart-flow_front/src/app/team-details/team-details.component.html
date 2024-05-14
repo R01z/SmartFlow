@@ -32,6 +32,7 @@
               <th>ID</th>
               <th>Nome</th>
               <th>Descrição</th>
+              <th>Tipo</th>
               <th>Data de Upload</th>
               <th>Arquivo</th>
               <th>Link</th>
@@ -44,6 +45,7 @@
               <td>{{ info.informationId }}</td>
               <td>{{ info.name }}</td>
               <td>{{ info.description }}</td>
+              <td>{{ info.type }}</td>
               <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
               <td>
                 <ng-container *ngIf="info.file">
