@@ -2,6 +2,7 @@
     <div class="card">
       <h2>{{ data.name }} - Detalhes</h2>
       <p><strong>Nome: </strong> {{ data.name }}</p>
+      <p><strong>Tipo: </strong> {{ data.type }}</p>
       <p><strong>Descrição: </strong> {{ data.description }}</p>
       <p><strong>Data de Upload: </strong> {{ data.uploadDate | date:'dd/MM/yyyy' }}</p>
       <ng-container *ngIf="data.file">
