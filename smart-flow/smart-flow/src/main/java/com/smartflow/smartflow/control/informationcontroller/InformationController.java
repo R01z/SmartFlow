@@ -71,6 +71,10 @@ public class InformationController {
             spec = spec.and(InformationSpecifications.tagsContain(filter.getTags()));
         }
 
+        if (filter.getTypeId() != null && !filter.getTypeId().isEmpty()) {
+            spec = spec.and(InformationSpecifications.typeIdIn(filter.getTypeId()));
+        }
+
         Iterable<Information> informations = informationService.findAll(spec);
 
         List<InformationResponse> response = new ArrayList<>();

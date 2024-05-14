@@ -15,4 +15,5 @@ public class InformationFilter {
     private String endDate;
     private List<Integer> teamId;
     private List<String> tags;
+    private List<Integer> typeId;
 }

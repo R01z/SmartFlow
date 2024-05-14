@@ -48,11 +48,15 @@ public class Information {
     @ElementCollection
     private List<String> tags;
 
+    @ManyToOne
+    @JoinColumn(name = "type_information_id")
+    private TypeInformation typeInformation;
+
     public Information() {
     }
 
     public Information(Integer informationId, String name, String description, Timestamp uploadDate, String filePath,
-            String link, Teams team, List<String> tags) {
+            String link, Teams team, List<String> tags, TypeInformation typeInformation) {
         this.informationId = informationId;
         this.name = name;
         this.description = description;
@@ -61,6 +65,7 @@ public class Information {
         this.link = link;
         this.team = team;
         this.tags = tags;
+        this.typeInformation = typeInformation;
     }
 
 }
