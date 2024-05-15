@@ -57,38 +57,40 @@
   
 
   <div class="results-container" *ngIf="showResults">
-      <!-- Resultados da Pesquisa -->
-      <h2>Resultados da Pesquisa</h2>
-      <table class="results-table">
-        <thead>
-          <tr>
-            <th (click)="sort('name')">Nome <span *ngIf="sortColumn === 'name' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'name' && sortDirection === 'desc'">&#9660;</span></th>
-            <th (click)="sort('uploadDate')">Upload <span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'desc'">&#9660;</span></th>            
-            <th>Tipo</th>
-            <th>Arquivo</th>
-            <th>Link</th>
-            <th>Detalhes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let info of informationResults">
-            <td>{{ info.name }}</td>
-            <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
-            <td>{{ info.type }}</td>
-            <td>
-              <ng-container *ngIf="info.file">
-                <a [href]="getDownloadUrl(info.informationId)">Download</a>
-              </ng-container>
-              <ng-container *ngIf="!info.file">
-                -
-              </ng-container>
-            </td>
-            <td><a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">{{ info.link }}</a></td>
-            <td class="details-cell">
-              <button class="btn btn-details" (click)="openDetailsModal(info)">Detalhes</button>
-            </td>            
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- Resultados da Pesquisa -->
+    <h2>Resultados da Pesquisa</h2>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th (click)="sort('name')">Nome <span *ngIf="sortColumn === 'name' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'name' && sortDirection === 'desc'">&#9660;</span></th>
+          <th (click)="sort('uploadDate')">Upload <span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'asc'">&#9650;</span><span *ngIf="sortColumn === 'uploadDate' && sortDirection === 'desc'">&#9660;</span></th>            
+          <th>Tipo</th>
+          <th>Arquivo</th>
+          <th>Link</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let info of informationResults">
+          <td>{{ info.name }}</td>
+          <td>{{ info.uploadDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ info.type }}</td>
+          <td>
+            <ng-container *ngIf="info.file">
+              <a [href]="getDownloadUrl(info.informationId)">Download</a>
+            </ng-container>
+            <ng-container *ngIf="!info.file">
+              -
+            </ng-container>
+          </td>
+          <td>
+            <a *ngIf="info.link" [href]="formatLink(info.link)" target="_blank">{{ info.link }}</a>
+          </td>
+          <td class="details-cell">
+            <button class="btn btn-details" (click)="openDetailsModal(info)">Detalhes</button>
+          </td>            
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

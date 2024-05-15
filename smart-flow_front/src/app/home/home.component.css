@@ -132,3 +132,45 @@
 .mat-select{
   width: 250px;
 }
+
+/* Definir uma largura máxima para a coluna de link */
+.results-table th, .results-table td {
+  border: 1px solid #ddd; /* Borda das células */
+  padding: 8px; /* Espaçamento interno das células */
+  text-align: left; /* Alinhamento do texto à esquerda */
+  max-width: 200px; /* Largura máxima das colunas */
+  word-wrap: break-word; /* Quebrar palavra para evitar overflow */
+  overflow: hidden; /* Esconder o conteúdo que ultrapassar a largura */
+  text-overflow: ellipsis; /* Adicionar elipses no final do conteúdo que ultrapassar a largura */
+  white-space: nowrap; /* Evitar quebras de linha */
+}
+
+/* Ajustar a coluna de link especificamente */
+.results-table th:nth-child(5), .results-table td:nth-child(5) {
+  max-width: 150px; /* Ajuste conforme necessário */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ajustar a coluna de detalhes especificamente */
+.results-table th:nth-child(6), .results-table td:nth-child(6) {
+  width: 100px; /* Largura fixa para a coluna de detalhes */
+  text-align: center; /* Centralizar o conteúdo */
+}
+
+.details-cell .btn-details {
+  width: 100%; /* Ajustar a largura do botão para ocupar toda a célula */
+  background-color: #F98903;
+  border-color: #F98903;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+/* Ajustar os cabeçalhos */
+.results-table th {
+  background-color: #f2f2f2; /* Cor de fundo do cabeçalho da tabela */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
