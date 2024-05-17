@@ -5,20 +5,22 @@ import { Team } from './models/team.model';
 import { Information } from './models/information.model';
 import { InformationFilter } from './models/information-filter.model';
 import { Mural } from './models/mural.model';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamsService {
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getAllTeams(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8090/api/v1/teams/getAllTeams');
+    return this.http.get<any[]>(`${this.apiUrl}/api/v1/teams/getAllTeams`);
   }
 
   getTeamDetails(teamId: number): Observable<Team> {
-    return this.http.get<Team>(`http://localhost:8090/api/v1/teams/getTeamById/${teamId}`);
+    return this.http.get<Team>(`${this.apiUrl}/api/v1/teams/getTeamById/${teamId}`);
   }
 
   getTeamInformation(filter: InformationFilter): Observable<Information[]> {
@@ -30,10 +32,10 @@ export class TeamsService {
     if (filter.teamId) params = params.set('teamId', filter.teamId.toString());
     if (filter.tags) params = params.set('tags', filter.tags.join(','));
 
-    return this.http.get<Information[]>('http://localhost:8090/api/v1/information/getInformations', { params: params });
+    return this.http.get<Information[]>(`${this.apiUrl}/api/v1/information/getInformations`, { params: params });
   }
 
   getMuralsByTeamId(teamId: number): Observable<Mural[]> {
-    return this.http.get<Mural[]>(`http://localhost:8090/api/v1/mural/team/${teamId}`);
+    return this.http.get<Mural[]>(`${this.apiUrl}/api/v1/mural/team/${teamId}`);
   }
 }

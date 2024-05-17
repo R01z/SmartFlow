@@ -3,12 +3,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InformationFilter } from './models/information-filter.model';
 import { Information } from './models/information.model';
-import { TypeInformation } from './models/type-information.model';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InformationService {
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -38,11 +39,11 @@ export class InformationService {
     }
 
     // Fazer a solicitação GET com os parâmetros de consulta
-    return this.http.get<Information[]>('http://localhost:8090/api/v1/information/getInformations', { params: params });
+    return this.http.get<Information[]>(`${this.apiUrl}/api/v1/information/getInformations`, { params: params });
   }
 
   getAllTypes(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8090/api/v1/typeinformation/getAllTypes');
+    return this.http.get<any[]>(`${this.apiUrl}/api/v1/typeinformation/getAllTypes`);
   }
 
 }

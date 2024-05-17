@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-add-mural-message',
@@ -14,6 +15,7 @@ export class AddMuralMessageComponent {
     title: '',
     mensagem: ''
   };
+  private apiUrl = environment.apiUrl;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private route: ActivatedRoute, 
   public dialogRef: MatDialogRef<AddMuralMessageComponent>) {
@@ -28,7 +30,7 @@ export class AddMuralMessageComponent {
     formData.append('text', this.avisoData.mensagem);
     formData.append('teamId', this.teamId.toString());
 
-    this.http.post('http://localhost:8090/api/v1/mural/save', formData).subscribe(response => {
+    this.http.post(`${this.apiUrl}/api/v1/mural/save`, formData).subscribe(response => {
       console.log(response);
       this.dialogRef.close();
     });

@@ -11,6 +11,7 @@ import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { AddMuralMessageComponent } from '../add-mural-message/add-mural-message.component';
 import { Mural } from '../models/mural.model';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-team-details',
@@ -27,6 +28,7 @@ export class TeamDetailsComponent implements OnInit {
   editorData: string = '';
   isReadOnly: boolean = true;
   murals: Mural[];
+  private apiUrl = environment.apiUrl;
 
   constructor(private route: ActivatedRoute, private teamsService: TeamsService, private dialog: MatDialog, private http: HttpClient) {
     this.team = {} as Team;
@@ -84,7 +86,7 @@ export class TeamDetailsComponent implements OnInit {
 } 
 
   loadTeamWikiText(teamId: number): void{
-    this.http.get<any>(`http://localhost:8090/api/v1/wiki/getByTeamId/${teamId}`)
+    this.http.get<any>(`${this.apiUrl}/api/v1/wiki/getByTeamId/${teamId}`)
       .subscribe(
         response => {
           if (response && response.text) {
@@ -100,7 +102,7 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   getDownloadUrl(informationId: number): string {
-    return `http://localhost:8090/api/v1/file/download/${informationId}`;
+    return `${this.apiUrl}/api/v1/file/download/${informationId}`;
   }
   
   formatLink(link: string): string {
@@ -111,7 +113,7 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   deleteInfo(informationId: number): void {
-    this.http.delete(`http://localhost:8090/api/v1/information/delete/${informationId}`, { responseType: 'text' }).subscribe((response: string) => {
+    this.http.delete(`${this.apiUrl}/api/v1/information/delete/${informationId}`, { responseType: 'text' }).subscribe((response: string) => {
       console.log('Informação deletada com sucesso:', response);
       // Atualiza a página
       window.location.reload();
@@ -133,7 +135,7 @@ export class TeamDetailsComponent implements OnInit {
 
   private saveOrUpdateWikiText(teamId: number, text: string): void {
     const request = { teamId, text };
-    this.http.post<any>('http://localhost:8090/api/v1/wiki/saveOrUpdate', request)
+    this.http.post<any>(`${this.apiUrl}/api/v1/wiki/saveOrUpdate`, request)
       .subscribe(
         response => {
           console.log('Texto da Wiki salvo com sucesso:', response);

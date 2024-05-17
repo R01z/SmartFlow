@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-add-information',
@@ -22,6 +23,7 @@ export class AddInformationComponent {
   tags: string = '';
   title: string = 'Adicionar Nova Informação'; // Título padrão
   types: any[] = [];
+  private apiUrl = environment.apiUrl;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private route: ActivatedRoute, 
   public dialogRef: MatDialogRef<AddInformationComponent>) {
@@ -33,7 +35,7 @@ export class AddInformationComponent {
   }
 
   loadTypes(): void {
-    this.http.get<any[]>('http://localhost:8090/api/v1/typeinformation/getAllTypes').subscribe(data => {
+    this.http.get<any[]>(`${this.apiUrl}/api/v1/typeinformation/getAllTypes`).subscribe(data => {
       this.types = data;
     });
   }
@@ -57,7 +59,7 @@ export class AddInformationComponent {
       formData.append(`tags[${index}]`, tag);
     });
 
-    this.http.post('http://localhost:8090/api/v1/information/save', formData).subscribe(response => {
+    this.http.post(`${this.apiUrl}/api/v1/information/save`, formData).subscribe(response => {
       console.log(response);
       
     });

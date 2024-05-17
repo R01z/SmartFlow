@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Information } from '../models/information.model';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-information-details',
@@ -8,11 +9,12 @@ import { Information } from '../models/information.model';
   styleUrls: ['./information-details.component.css']
 })
 export class InformationDetailsComponent {
+  private apiUrl = environment.apiUrl;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Information) {}
 
   getDownloadUrl(informationId: number): string {
-    return `http://localhost:8090/api/v1/file/download/${informationId}`;
+    return `${this.apiUrl}/api/v1/file/download/${informationId}`;
   }
 
   formatLink(link: string): string {

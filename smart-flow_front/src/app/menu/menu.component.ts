@@ -12,6 +12,7 @@ export class MenuComponent implements OnInit {
   userTeams: Team[] = [];
   dropdownOpen: boolean = false;
   isAdmin: boolean = false;
+  
  
   constructor(private userService: UserService, private dropdownService: DropdownService) { }
 

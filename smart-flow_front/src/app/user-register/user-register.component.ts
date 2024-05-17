@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-
+import { environment } from '../../environments/environment';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -21,6 +21,7 @@ export class UserRegisterComponent implements OnInit {
   title: string = 'Adicionar Novo Usuário'; // Título padrão
   submitButtonLabel: string = 'Cadastrar'; // Rótulo do botão padrão
   isEditMode: boolean = false; // Define o modo de edição
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, 
     public dialogRef: MatDialogRef<UserRegisterComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
@@ -37,13 +38,13 @@ export class UserRegisterComponent implements OnInit {
   }
 
   getUser(userId: string): void {
-    this.http.get<any>('http://localhost:8090/api/v1/users/getUserById/' + userId).subscribe(user => {
+    this.http.get<any>(`${this.apiUrl}/api/v1/users/getUserById/` + userId).subscribe(user => {
       this.userData = user;
     });
   }
 
   getAllRoles(): void {
-    this.http.get<any[]>('http://localhost:8090/api/v1/roles/getAllRoles').subscribe(data => {
+    this.http.get<any[]>(`${this.apiUrl}/api/v1/roles/getAllRoles`).subscribe(data => {
       this.roles = data;
     });
   }
@@ -51,7 +52,7 @@ export class UserRegisterComponent implements OnInit {
   submitForm(): void {
     console.log(this.userData);
     // Enviar
-    this.http.post('http://localhost:8090/api/v1/users/save', this.userData).subscribe(response => {
+    this.http.post(`${this.apiUrl}/api/v1/users/save`, this.userData).subscribe(response => {
       console.log(response);
       // Resposta
     });
@@ -59,7 +60,7 @@ export class UserRegisterComponent implements OnInit {
 
   deleteUser(): void {
     const userId = this.data.userId;
-    this.http.delete(`http://localhost:8090/api/v1/users/deleteUser/${userId}`).subscribe(response => {
+    this.http.delete(`${this.apiUrl}/api/v1/users/deleteUser/${userId}`).subscribe(response => {
       console.log('Usuário deletado com sucesso:', response);
       this.dialogRef.close(); // Fecha a janela modal após a exclusão
     }, error => {

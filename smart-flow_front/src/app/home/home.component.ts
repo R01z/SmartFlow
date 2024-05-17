@@ -7,6 +7,7 @@ import { InformationService } from '../information.service';
 import { Team } from '../models/team.model';
 import { InformationDetailsComponent } from '../information-details/information-details.component';
 import { TypeInformation } from '../models/type-information.model';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   sortDirection: string = 'asc'; // Direção da ordenação: 'asc' ou 'desc'
   availableTypes: TypeInformation[] = [];
   selectedTypes: number[] = [];
+  private apiUrl = environment.apiUrl;
 
   constructor(private dialog: MatDialog, private userService: UserService, private informationService: InformationService) { }
 
@@ -81,7 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   getDownloadUrl(informationId: number): string {
-    return `http://localhost:8090/api/v1/file/download/${informationId}`;
+    return `${this.apiUrl}/api/v1/file/download/${informationId}`;
   }
 
   openDetailsModal(info: Information): void {

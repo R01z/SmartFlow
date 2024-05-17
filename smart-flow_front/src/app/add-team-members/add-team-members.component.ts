@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TeamsRegisterComponent } from '../teams-register/teams-register.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-add-team-members',
@@ -13,6 +14,7 @@ export class AddTeamMembersComponent {
   teamId!: number;
   memberEmails: string = '';
   title: string = 'Adicionar Membro'; // Título padrão
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, 
     public dialogRef: MatDialogRef<TeamsRegisterComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
@@ -29,7 +31,7 @@ export class AddTeamMembersComponent {
     
     console.log(emails);
     // Envie os dados do formulário para o servidor usando HttpClient
-    this.http.post(`http://localhost:8090/api/v1/teams/${this.teamId}/addMembersByEmail`, emails).subscribe(response => {
+    this.http.post(`${this.apiUrl}/api/v1/teams/${this.teamId}/addMembersByEmail`, emails).subscribe(response => {
       console.log(response);
       // Aqui você pode lidar com a resposta do servidor, por exemplo, exibindo uma mensagem de sucesso ou fechando a janela modal
       this.dialogRef.close(true); // Fecha a janela modal após adicionar os membros com sucesso

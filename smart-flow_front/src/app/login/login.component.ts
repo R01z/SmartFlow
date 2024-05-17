@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
- 
+  private apiUrl = environment.apiUrl;
 
   email: string ="";
   password: string ="";
 
-
   constructor(private router: Router,private http: HttpClient) {}
  
-
-
   Login() {
     console.log(this.email);
     console.log(this.password);
@@ -27,7 +25,7 @@ export class LoginComponent {
       password: this.password,
     };
  
-        this.http.post("http://localhost:8090/api/v1/users/login", bodyData).subscribe(  (resultData: any) => {
+        this.http.post(`${this.apiUrl}/api/v1/users/login`, bodyData).subscribe(  (resultData: any) => {
         console.log(resultData);
  
         if (resultData.message == "Email not exits")
