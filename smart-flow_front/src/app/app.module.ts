@@ -29,6 +29,7 @@ import { AddInformationComponent } from './add-information/add-information.compo
 import { InformationDetailsComponent } from './information-details/information-details.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AddMuralMessageComponent } from './add-mural-message/add-mural-message.component';
+import { AjudaComponent } from './ajuda/ajuda.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AddMuralMessageComponent } from './add-mural-message/add-mural-message.
     TeamDetailsComponent,
     AddInformationComponent,
     InformationDetailsComponent,
-    AddMuralMessageComponent
+    AddMuralMessageComponent,
+    AjudaComponent
   ],
   imports: [
     BrowserModule,

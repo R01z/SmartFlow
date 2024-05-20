@@ -16,6 +16,7 @@ import com.smartflow.smartflow.model.TypeInformation;
 import com.smartflow.smartflow.repository.InformationRepository;
 import com.smartflow.smartflow.repository.TeamsRepository;
 import com.smartflow.smartflow.repository.TypeInformationRepository;
+import com.smartflow.smartflow.util.FileNameSanitizer;
 
 @Service
 public class InformationServiceImpl implements InformationService {
@@ -29,7 +30,7 @@ public class InformationServiceImpl implements InformationService {
     @Autowired
     TypeInformationRepository typeInformationRepository;
 
-    private static final String BASE_DIRECTORY = "D:\\SmartFlowFiles\\";
+    private static final String BASE_DIRECTORY = System.getProperty("java.io.tmpdir") + File.separator;
 
     @Override
     public Iterable<Information> findAll(Specification<Information> spec) {
@@ -63,14 +64,18 @@ public class InformationServiceImpl implements InformationService {
         if (file != null && !file.isEmpty()) {
             try {
                 // Cria o diretório com base no teamId, se não existir
-                String teamDirectoryPath = BASE_DIRECTORY + informationDTO.getTeamId() + "\\";
+                String teamDirectoryPath = BASE_DIRECTORY + informationDTO.getTeamId() + File.separator;
                 File teamDirectory = new File(teamDirectoryPath);
                 if (!teamDirectory.exists()) {
                     teamDirectory.mkdirs(); // Cria o diretório e todos os diretórios pais, se necessário
                 }
 
+                // Definir nome com que arquivo será salvo
+                String originalFileName = file.getOriginalFilename();
+                String sanitizedFileName = FileNameSanitizer.sanitizeFileName(originalFileName);
+
                 // Define o caminho de destino para salvar o arquivo dentro do diretório do time
-                String filePath = teamDirectoryPath + file.getOriginalFilename();
+                String filePath = teamDirectoryPath + sanitizedFileName;
 
                 // Salva o arquivo no diretório do time
                 File destFile = new File(filePath);

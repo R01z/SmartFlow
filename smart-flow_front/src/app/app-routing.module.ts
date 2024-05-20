@@ -6,6 +6,7 @@ import { UserControlComponent } from './user-control/user-control.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamDetailsComponent } from './team-details/team-details.component';
+import { AjudaComponent } from './ajuda/ajuda.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,9 @@ const routes: Routes = [
 
   { path: 'teams/:teamId', 
     component: TeamDetailsComponent 
-  }
+  },
+
+  { path: 'help', component: AjudaComponent }
 
 ];
 

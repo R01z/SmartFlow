@@ -15,6 +15,7 @@
           <a *ngFor="let team of userTeams" [routerLink]="['/teams', team.teamId]">{{ team.name }}</a>
         </div>
       </li>
+      <li><a [routerLink]="['/help']">Ajuda</a></li>
     </ul>
   </nav>
 </header>
